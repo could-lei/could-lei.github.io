@@ -174,14 +174,16 @@
       
         <h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><h3 id="基础术语"><a href="#基础术语" class="headerlink" title="基础术语"></a>基础术语</h3><p>  一般情况下，设D={x1,x2,…,xn} 表示包含n个示例的数据集，其中每个示例xi包含d个属性，则每个示例可以表示为xi={xi1,xi2,…xid}d维样本空间的一个向量；也就是数据集可以视为n个在d维空间的向量集合。</p>
 <p>  <strong>训练样本</strong>：训练过程中使用的数据称为“训练数据”；<br>  <strong>训练样本</strong>：训练数据中样本称为训练样本；</p>
-<hr>
 <blockquote>
 <p>“模型”泛指从数据中学得的结果<br>从数据中学得模型的过程称为“学习”或“训练”，这个过程通过执行某个学习算法来完成。</p>
 </blockquote>
 <hr>
 <p>从数据中<strong><em>学得模型</em></strong>对应的是数据集中存在的某种潜在规律，也称作“<strong><em>假设</em></strong>”。机器学习就是从数据中寻找正确或者近似正确的“假设”。这种潜在的<strong><em>规律</em></strong>也被称为“<strong><em>真相</em></strong>”或者“<strong><em>真实</em></strong>”。<br>在建立分类模型的过程中，我们常常需要在示例中添加<strong><em>标记</em></strong>（label），拥有label的示例也被称为“<strong><em>样例</em></strong>”。每个“样例”可以表示（xi，yi）,其中yi&in; &gamma;是该示例的label，&gamma;则是label定义域，也可称为“<strong><em>标记空间</em></strong>”（label space）或者“<strong><em>输出空间</em></strong>”。</p>
 <h3 id="回归与分类"><a href="#回归与分类" class="headerlink" title="回归与分类"></a>回归与分类</h3><p>若我们需要预测的是离散值，则此类学习任务称为分类（classification）；若我们需要预测的是连续值，则此类学习任务称为回归（regression）。而分类又可以根据涉及两个或者更多类别分为“二分类”和“多分类”任务。二分类任务中一个类别称为正类，另一个称为反类。<br/><br>一般在一个预测任务中都是希望通过数据集{（x1,y1）,(x2,y2),…(xn,yn)}进行学习建立一个从输入空间X到输出空间 &gamma;的映射f:X &rarr; &gamma;。对于不同学习任务 &gamma;的定义也不一样，二分类任务 &gamma;={-1，+1}或 &gamma;={0,1}；多分类任务 &gamma;=R,R为实数集。</p>
-<h3 id="聚类（clustering）"><a href="#聚类（clustering）" class="headerlink" title="聚类（clustering）"></a>聚类（clustering）</h3><p>对训练集的示例进行分组分成若干组，每个组称作一个“簇”（cluster）</p>
+<h3 id="聚类（clustering）"><a href="#聚类（clustering）" class="headerlink" title="聚类（clustering）"></a>聚类（clustering）</h3><p>对训练集的示例进行分组分成若干组，每个组称作一个“簇”（cluster），这些自动生成簇可能通过某种潜在的概念划分的，如“深色瓜”，“浅色瓜”,有利于我们进行分析。在聚类学习中“深色瓜”等概念我们事先是不知道的，而且在聚类学习中使用的数据集是无标记的。</p>
+<h3 id="监督信息（supervised-learning）与无监督学习-unsupervised-learning"><a href="#监督信息（supervised-learning）与无监督学习-unsupervised-learning" class="headerlink" title="监督信息（supervised learning）与无监督学习(unsupervised learning)"></a>监督信息（supervised learning）与无监督学习(unsupervised learning)</h3><p>根据训练集中是否拥有标记，学习任务可以分成监督信息（supervised learning）与无监督学习(unsupervised learning)。分类和回归属于前者，聚类则属于后者。</p>
+<h3 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h3><p>将学习过程组成看作是一个所有假设组成的空间中进行搜索的过程，搜索的目标是找到与训练集“匹配（fit）”的假设，但是学习过程是基于有限样本训练集进行的，可能存在多个与训练集一致的“假设集合”，称之为“版本空间”。</p>
+<h3 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h3><p>机器学习算法在学习过程中某种类型假设的偏好，称之为“归纳偏好（inductive bias）”或者称之为“偏好”。</p>
 
       
 
