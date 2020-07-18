@@ -8,13 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>机器学习笔记 | 雷利锋个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="机器学习基础基础术语  一般情况下，设D&#x3D;{x1,x2,…,xn} 表示包含n个示例的数据集，其中每个示例xi包含d个属性，则每个示例可以表示为xi&#x3D;{xi1,xi2,…xid}d维样本空间的一个向量；也就是数据集可以视为n个在d维空间的向量集合。   训练样本：训练过程中使用的数据称为“训练数据”；  训练样本：训练数据中样本称为训练样本；   “模型”泛指从数据中学得的结果从数据中学得模型的过">
+<meta property="og:type" content="article">
 <meta property="og:title" content="机器学习笔记">
 <meta property="og:url" content="http://yoursite.com/2020/07/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="雷利锋个人博客">
+<meta property="og:description" content="机器学习基础基础术语  一般情况下，设D&#x3D;{x1,x2,…,xn} 表示包含n个示例的数据集，其中每个示例xi包含d个属性，则每个示例可以表示为xi&#x3D;{xi1,xi2,…xid}d维样本空间的一个向量；也就是数据集可以视为n个在d维空间的向量集合。   训练样本：训练过程中使用的数据称为“训练数据”；  训练样本：训练数据中样本称为训练样本；   “模型”泛指从数据中学得的结果从数据中学得模型的过">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-17T13:26:15.000Z">
-<meta property="article:modified_time" content="2020-07-17T13:44:13.492Z">
+<meta property="article:modified_time" content="2020-07-18T06:12:48.211Z">
 <meta property="article:author" content="雷利锋">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -46,7 +48,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/user.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">雷利锋</a></h1>
@@ -104,7 +106,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/user.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">雷利锋</h1>
@@ -173,7 +175,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><h3 id="基础术语"><a href="#基础术语" class="headerlink" title="基础术语"></a>基础术语</h3><p>  一般情况下，设D={x1,x2,…,xn} 表示包含n个示例的数据集，其中每个示例xi包含d个属性，则每个示例可以表示为xi={xi1,xi2,…xid}d维样本空间的一个向量；也就是数据集可以视为n个在d维空间的向量集合。</p>
+<p>  <strong>训练样本</strong>：训练过程中使用的数据称为“训练数据”；<br>  <strong>训练样本</strong>：训练数据中样本称为训练样本；</p>
+<hr>
+<blockquote>
+<p>“模型”泛指从数据中学得的结果<br>从数据中学得模型的过程称为“学习”或“训练”，这个过程通过执行某个学习算法来完成。</p>
+</blockquote>
+<hr>
+<p>从数据中<strong><em>学得模型</em></strong>对应的是数据集中存在的某种潜在规律，也称作“<strong><em>假设</em></strong>”。机器学习就是从数据中寻找正确或者近似正确的“假设”。这种潜在的<strong><em>规律</em></strong>也被称为“<strong><em>真相</em></strong>”或者“<strong><em>真实</em></strong>”。<br>在建立分类模型的过程中，我们常常需要在示例中添加<strong><em>标记</em></strong>（label），拥有label的示例也被称为“<strong><em>样例</em></strong>”。每个“样例”可以表示（xi，yi）,其中yi&in; &gamma;是该示例的label，&gamma;则是label定义域，也可称为“<strong><em>标记空间</em></strong>”（label space）或者“<strong><em>输出空间</em></strong>”。</p>
+<h3 id="回归与分类"><a href="#回归与分类" class="headerlink" title="回归与分类"></a>回归与分类</h3><pre><code>若我们需要预测的是离散值，则此类学习任务称为分类（classification）；若我们需要预测的是连续值，则此类学习任务称为回归（regression）。而分类又可以根据涉及两个或者更多类别分为“二分类”和“多分类”任务。二分类任务中一个类别称为正类，另一个称为反类。&lt;br/&gt;
+一般在一个预测任务中都是希望通过数据集{（x1,y1）,(x2,y2),...(xn,yn)}进行学习建立一个从输入空间X到输出空间 &amp;gamma;的映射f:X &amp;gamma;</code></pre>
       
 
       
@@ -189,6 +200,16 @@
                   <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你，老板<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wxpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
                     
                   </div>
                 </span>
