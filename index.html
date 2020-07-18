@@ -183,7 +183,7 @@
 <h3 id="聚类（clustering）"><a href="#聚类（clustering）" class="headerlink" title="聚类（clustering）"></a>聚类（clustering）</h3><p>对训练集的示例进行分组分成若干组，每个组称作一个“簇”（cluster），这些自动生成簇可能通过某种潜在的概念划分的，如“深色瓜”，“浅色瓜”,有利于我们进行分析。在聚类学习中“深色瓜”等概念我们事先是不知道的，而且在聚类学习中使用的数据集是无标记的。</p>
 <h3 id="监督信息（supervised-learning）与无监督学习-unsupervised-learning"><a href="#监督信息（supervised-learning）与无监督学习-unsupervised-learning" class="headerlink" title="监督信息（supervised learning）与无监督学习(unsupervised learning)"></a>监督信息（supervised learning）与无监督学习(unsupervised learning)</h3><p>根据训练集中是否拥有标记，学习任务可以分成监督信息（supervised learning）与无监督学习(unsupervised learning)。分类和回归属于前者，聚类则属于后者。</p>
 <h3 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h3><p>将学习过程组成看作是一个所有假设组成的空间中进行搜索的过程，搜索的目标是找到与训练集“匹配（fit）”的假设，但是学习过程是基于有限样本训练集进行的，可能存在多个与训练集一致的“假设集合”，称之为“版本空间”。</p>
-<h3 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h3><p>机器学习算法在学习过程中某种类型假设的偏好，称之为“归纳偏好（inductive bias）”或者称之为“偏好”。</p>
+<h3 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h3><p>机器学习算法在学习过程中某种类型假设的偏好，称之为“归纳偏好（inductive bias）”或者称之为“偏好”。实际上，归纳偏好对应了学习算法本身所作出的关于“怎样的模型更好”的假设。在具体的现实问题中，这个假设算法成立，即算法的归纳偏好是否与问题本身匹配，大多数时候直接决定了算法能否取得好的性能。<br><strong><em>奥卡姆剃刀：</em></strong>若有多个假设与观察一致，则选择最简单的那个。<br>任意两个假设的总误差都是一样的，与学习算法无关，也就是任意一个假设都有可能存在一个与之对应的情况，所以脱离实际问题谈算法是很荒谬的在实际问题中学习算法自身的归纳偏好与问题是否相配，往往起到决定作用。</p>
 
       
 
