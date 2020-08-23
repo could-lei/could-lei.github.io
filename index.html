@@ -165,6 +165,68 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-知识蒸馏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/23/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">知识蒸馏</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/23/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" class="archive-article-date">
+  	<time datetime="2020-08-23T07:38:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/23/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-感知机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -185,7 +247,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>&ensp;&ensp;<strong>感知机</strong>是一个<strong>二类分类</strong>的<strong>线性分类模型</strong>,即<strong>判别模型</strong>，对应于输入空间中将实例划分为正负两类的<strong>分离超平面</strong>；通过将n维的输入空间（特征空间）通过f(x)=sign(wx+b)输出到y={+1,-1}；wx+b=0（为一平面）不属于正类负类任何一类，在该定义下可以视为一个$$ {w^0}{x^0}+{w^1}{x^1}+…+{w^n}{x^n}+b=0 $$超平面，一个将正负类分离的n维超平面（介于两者之间的分类界限）。</p>
+<blockquote>
+<p>如果一个数据集投射到n维空间上，可以找到一个超平面将它划分两侧则该数据集是线性可分；否则非线性可分</p>
+</blockquote>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>&ensp;&ensp;旨在求出将训练数据进行线性划分的<strong>分离超平面</strong>。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>简单</li>
+<li>易于实现</li>
+</ul>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>&ensp;&ensp;$$f(x)=sign(w*x+b)$$</p>
+<blockquote>
+<p>sign(x)为<strong>符号函数</strong>。</p>
+</blockquote>
+<h2 id="策略（loss-function）"><a href="#策略（loss-function）" class="headerlink" title="策略（loss function）"></a>策略（loss function）</h2><p>$$L(w,b)=\sum\limits_{i=0}^M {|(w*xi+b)|}$$<br>该损失函数为原为<br>$$\frac{1}{||w||} {yi*{(w*xi+b)}}$$<br>,其中$${||w||} $$为w的L2范数，整体表示为误分类的点到超平面的距离，这个策略相比与其他的策略更加能直观的表述误分类点与损失函数的关系；此外<br>$${-yi*(w*xi+b)&gt;0} $$对于误分类的实例恒成立，此处易得<br>$$\frac{1}{||w||} {yi*{(w*xi+b)}}$$,所以所有的误分类点到超平面的距离和可以表示为<br>$$\frac{1}{||w||}\sum\limits_{i=0}^M {yi*{(w*xi+b)}}$$;在不考虑$${\frac{1}{||w||}}$$的情况下，就得到loss函数$$L(w,b)=\sum\limits_{i=0}^M {|(w*xi+b)|}$$，加入yi的原因我认为是原先L2范数中y的表达过于复杂，尤其在求导之后，通过恒等式的方式加入yi,求导更加简单根据奥卡姆剃刀原则，该方式可能更加好。</p>
+<blockquote>
+<p>L2范数是则坐标平方和的平方根；loss函数必须包含x和y才能求导</p>
+</blockquote>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="原始形式"><a href="#原始形式" class="headerlink" title="原始形式"></a>原始形式</h3><p>&ensp;&ensp;任意选择一个超平面，然后用梯度下降法不断地极小化目标函数。</p>
+<ul>
+<li>1、选取初始值w0,b0</li>
+<li>2、在训练集中选取数据（xi,yi）</li>
+<li>3、如果yi(w*xi+b)&lt;=0;w&lt;-w+ηyixi,b&lt;-b+ηyi</li>
+<li>4、转到2，直到训练集中没有误分类点</li>
+</ul>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#原始模式 处理数据</span><br><span class="line">def process(T,w,b):</span><br><span class="line">    x ,y&#x3D; T[:,0:-1],T[:,-1]</span><br><span class="line">    def f(x):</span><br><span class="line">        def sum(x, y):</span><br><span class="line">            return x + y</span><br><span class="line">        return sign(reduce(sum, (w * x))+b)</span><br><span class="line">    result&#x3D;np.array(list(map(f,x)))</span><br><span class="line">    return result&#x3D;&#x3D;y</span><br><span class="line">#感知机 原始模式</span><br><span class="line">def perceptron(T,rate):</span><br><span class="line">    shape&#x3D;T.shape</span><br><span class="line">    w0,b0&#x3D;np.random.random((shape[1]-1,)),np.random.random((1,))</span><br><span class="line">    while True:</span><br><span class="line">        temporary&#x3D;process(T,w0,b0)</span><br><span class="line">        if  False in temporary:</span><br><span class="line">            def findFalse(temp):</span><br><span class="line">                for i in range(len(temp)):</span><br><span class="line">                    if temp[i]&#x3D;&#x3D;False:</span><br><span class="line">                        return i</span><br><span class="line">            temporary&#x3D;T[findFalse(temporary)]</span><br><span class="line">            x,y&#x3D;temporary[0:-1],temporary[-1]</span><br><span class="line">            w0,b0&#x3D;w0+rate*y*x,b0+rate*y</span><br><span class="line">        else:</span><br><span class="line">            break</span><br><span class="line">    return w0,b0</span><br></pre></td></tr></table></figure>
+<p>该方法还不是最好的办法，但是也可以求得最终结果。</p>
+
       
 
       
@@ -193,6 +281,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">感知机</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二分类模型，判别模型</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -428,6 +535,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">感知机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">二分类模型，判别模型</a>
               </li>
             
             <div class="clearfix"></div>
