@@ -185,7 +185,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h1><blockquote>
+<p>Hinton G , Vinyals O , Dean J . Distilling the Knowledge in a Neural Network[J]. Computer ence, 2015, 14(7):38-39.</p>
+</blockquote>
+<p>&ensp;&ensp;该论文论述了一种减轻模型的迁移学习方法–知识蒸馏；知识蒸馏的内容是通过由原模型的softmax函数输出的logits组成迁移集提供给新模型训练，从而将原模型的能力转移到新模型上的能力，由于新模型往往更加轻量化，进而实现模型的压缩。<br/><br>&ensp;&ensp;作者认为大模型易于从数据中提取特征，但不易于部署；小模型易于部署，却不利于从数据中提取特征。为何不利用大模型从数据中提取特征，但通过小模型部署到工作环境中。</p>
+<h2 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h2><p>&ensp;&ensp;知识蒸馏模型解决了模型在资源紧缺的平台上的部署；传统的训练方式是为将模型尽可能去概括训练集数据，而知识蒸馏则是尽可能去概括大型模型。</p>
+<h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><p>&ensp;&ensp;训练模型的损失函数为$$Loss=w1*CE(y,p)+w2CE(q,p)$$<br>其中w1,w2为两个交叉熵的权值，CE为交叉熵函数，y为label标签，q为原模型的输出，p为训练模型的输出；训练的过程首先通过训练大型模型，大型模型的输出层为softmax函数，输出的结果称为logits；并将logits作为转换集（transfer set）的soft label用于小模型训练。<br/><br>&ensp;&ensp;训练时的注意点：</p>
+<ul>
+<li>模型的选择不能一味的缩小模型的规模，规模过于小时，模型将无法获取全部的知识；</li>
+<li>模型训练过程中往往忽视明显消极的logits</li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li>原模型softmax函数输出logits作为训练模型的输入</li>
+<li>根据loss函数算出梯度</li>
+<li>调整参数返回步骤1</li>
+</ul>
+
       
 
       
@@ -193,6 +208,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识蒸馏</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">迁移学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -247,7 +277,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>&ensp;&ensp;<strong>感知机</strong>是一个<strong>二类分类</strong>的<strong>线性分类模型</strong>,即<strong>判别模型</strong>，对应于输入空间中将实例划分为正负两类的<strong>分离超平面</strong>；通过将n维的输入空间（特征空间）通过f(x)=sign(wx+b)输出到y={+1,-1}；wx+b=0（为一平面）不属于正类负类任何一类，在该定义下可以视为一个$$ {w^0}{x^0}+{w^1}{x^1}+…+{w^n}{x^n}+b=0 $$超平面，一个将正负类分离的n维超平面（介于两者之间的分类界限）。</p>
+        <h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><img src="/img/感知机.png">
+
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>&ensp;&ensp;<strong>感知机</strong>是一个<strong>二类分类</strong>的<strong>线性分类模型</strong>,即<strong>判别模型</strong>，对应于输入空间中将实例划分为正负两类的<strong>分离超平面</strong>；通过将n维的输入空间（特征空间）通过f(x)=sign(wx+b)输出到y={+1,-1}；wx+b=0（为一平面）不属于正类负类任何一类，在该定义下可以视为一个$$ {w^0}{x^0}+{w^1}{x^1}+…+{w^n}{x^n}+b=0 $$超平面，一个将正负类分离的n维超平面（介于两者之间的分类界限）。</p>
 <blockquote>
 <p>如果一个数据集投射到n维空间上，可以找到一个超平面将它划分两侧则该数据集是线性可分；否则非线性可分</p>
 </blockquote>
@@ -269,10 +301,11 @@
 <li>1、选取初始值w0,b0</li>
 <li>2、在训练集中选取数据（xi,yi）</li>
 <li>3、如果yi(w*xi+b)&lt;=0;w&lt;-w+ηyixi,b&lt;-b+ηyi</li>
-<li>4、转到2，直到训练集中没有误分类点</li>
+<li>4、转到2，直到训练集中没有误分类点<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4></li>
 </ul>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#原始模式 处理数据</span><br><span class="line">def process(T,w,b):</span><br><span class="line">    x ,y&#x3D; T[:,0:-1],T[:,-1]</span><br><span class="line">    def f(x):</span><br><span class="line">        def sum(x, y):</span><br><span class="line">            return x + y</span><br><span class="line">        return sign(reduce(sum, (w * x))+b)</span><br><span class="line">    result&#x3D;np.array(list(map(f,x)))</span><br><span class="line">    return result&#x3D;&#x3D;y</span><br><span class="line">#感知机 原始模式</span><br><span class="line">def perceptron(T,rate):</span><br><span class="line">    shape&#x3D;T.shape</span><br><span class="line">    w0,b0&#x3D;np.random.random((shape[1]-1,)),np.random.random((1,))</span><br><span class="line">    while True:</span><br><span class="line">        temporary&#x3D;process(T,w0,b0)</span><br><span class="line">        if  False in temporary:</span><br><span class="line">            def findFalse(temp):</span><br><span class="line">                for i in range(len(temp)):</span><br><span class="line">                    if temp[i]&#x3D;&#x3D;False:</span><br><span class="line">                        return i</span><br><span class="line">            temporary&#x3D;T[findFalse(temporary)]</span><br><span class="line">            x,y&#x3D;temporary[0:-1],temporary[-1]</span><br><span class="line">            w0,b0&#x3D;w0+rate*y*x,b0+rate*y</span><br><span class="line">        else:</span><br><span class="line">            break</span><br><span class="line">    return w0,b0</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#原始模式 处理数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(T,w,b)</span>:</span></span><br><span class="line">    x ,y= T[:,<span class="number">0</span>:<span class="number">-1</span>],T[:,<span class="number">-1</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> x + y</span><br><span class="line">        <span class="keyword">return</span> sign(reduce(sum, (w * x))+b)</span><br><span class="line">    result=np.array(list(map(f,x)))</span><br><span class="line">    <span class="keyword">return</span> result==y</span><br><span class="line"><span class="comment"># 感知机 原始模式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">perceptron</span><span class="params">(T,rate)</span>:</span></span><br><span class="line">    shape=T.shape</span><br><span class="line">    w0,b0=np.random.random((shape[<span class="number">1</span>]<span class="number">-1</span>,)),np.random.random((<span class="number">1</span>,))</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temporary=process(T,w0,b0)</span><br><span class="line">        <span class="keyword">if</span>  <span class="literal">False</span> <span class="keyword">in</span> temporary:</span><br><span class="line">            <span class="function"><span class="keyword">def</span> <span class="title">findFalse</span><span class="params">(temp)</span>:</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(len(temp)):</span><br><span class="line">                    <span class="keyword">if</span> temp[i]==<span class="literal">False</span>:</span><br><span class="line">                        <span class="keyword">return</span> i</span><br><span class="line">            temporary=T[findFalse(temporary)]</span><br><span class="line">            x,y=temporary[<span class="number">0</span>:<span class="number">-1</span>],temporary[<span class="number">-1</span>]</span><br><span class="line">            w0,b0=w0+rate*y*x,b0+rate*y</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> w0,b0</span><br></pre></td></tr></table></figure>
 <p>该方法还不是最好的办法，但是也可以求得最终结果。</p>
+<h1 id="对偶模式"><a href="#对偶模式" class="headerlink" title="对偶模式"></a>对偶模式</h1><p>与原始模式相同就是在原来的基础上减少了计算，将内积提前存储在矩阵上。</p>
 
       
 
@@ -543,6 +576,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">二分类模型，判别模型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">知识蒸馏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">迁移学习</a>
               </li>
             
             <div class="clearfix"></div>

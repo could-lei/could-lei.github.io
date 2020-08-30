@@ -8,15 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>知识蒸馏 | 雷利锋个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="知识蒸馏 Hinton G , Vinyals O , Dean J . Distilling the Knowledge in a Neural Network[J]. Computer ence, 2015, 14(7):38-39.  &amp;ensp;&amp;ensp;该论文论述了一种减轻模型的迁移学习方法–知识蒸馏；知识蒸馏的内容是通过由原模型的softmax函数输出的logits组成迁移集提供给新">
+<meta property="og:type" content="article">
 <meta property="og:title" content="知识蒸馏">
 <meta property="og:url" content="http://yoursite.com/2020/08/23/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/index.html">
 <meta property="og:site_name" content="雷利锋个人博客">
+<meta property="og:description" content="知识蒸馏 Hinton G , Vinyals O , Dean J . Distilling the Knowledge in a Neural Network[J]. Computer ence, 2015, 14(7):38-39.  &amp;ensp;&amp;ensp;该论文论述了一种减轻模型的迁移学习方法–知识蒸馏；知识蒸馏的内容是通过由原模型的softmax函数输出的logits组成迁移集提供给新">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-23T07:38:30.000Z">
-<meta property="article:modified_time" content="2020-08-23T07:38:30.984Z">
+<meta property="article:modified_time" content="2020-08-30T11:49:21.950Z">
 <meta property="article:author" content="雷利锋">
-<meta property="article:tag" content="雷利锋">
+<meta property="article:tag" content="知识蒸馏">
+<meta property="article:tag" content="迁移学习">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="雷利锋个人博客" type="application/atom+xml">
@@ -185,7 +188,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h1><blockquote>
+<p>Hinton G , Vinyals O , Dean J . Distilling the Knowledge in a Neural Network[J]. Computer ence, 2015, 14(7):38-39.</p>
+</blockquote>
+<p>&ensp;&ensp;该论文论述了一种减轻模型的迁移学习方法–知识蒸馏；知识蒸馏的内容是通过由原模型的softmax函数输出的logits组成迁移集提供给新模型训练，从而将原模型的能力转移到新模型上的能力，由于新模型往往更加轻量化，进而实现模型的压缩。<br/><br>&ensp;&ensp;作者认为大模型易于从数据中提取特征，但不易于部署；小模型易于部署，却不利于从数据中提取特征。为何不利用大模型从数据中提取特征，但通过小模型部署到工作环境中。</p>
+<h2 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h2><p>&ensp;&ensp;知识蒸馏模型解决了模型在资源紧缺的平台上的部署；传统的训练方式是为将模型尽可能去概括训练集数据，而知识蒸馏则是尽可能去概括大型模型。</p>
+<h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><p>&ensp;&ensp;训练模型的损失函数为$$Loss=w1*CE(y,p)+w2CE(q,p)$$<br>其中w1,w2为两个交叉熵的权值，CE为交叉熵函数，y为label标签，q为原模型的输出，p为训练模型的输出；训练的过程首先通过训练大型模型，大型模型的输出层为softmax函数，输出的结果称为logits；并将logits作为转换集（transfer set）的soft label用于小模型训练。<br/><br>&ensp;&ensp;训练时的注意点：</p>
+<ul>
+<li>模型的选择不能一味的缩小模型的规模，规模过于小时，模型将无法获取全部的知识；</li>
+<li>模型训练过程中往往忽视明显消极的logits</li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li>原模型softmax函数输出logits作为训练模型的输入</li>
+<li>根据loss函数算出梯度</li>
+<li>调整参数返回步骤1</li>
+</ul>
+
       
 
       
@@ -224,6 +242,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识蒸馏</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">迁移学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -446,6 +479,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">二分类模型，判别模型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">知识蒸馏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">迁移学习</a>
               </li>
             
             <div class="clearfix"></div>
