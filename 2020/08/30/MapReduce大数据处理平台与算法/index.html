@@ -6,28 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>MapReduce大数据处理平台与算法 | 雷利锋个人博客</title>
+  <title>MapReduce大数据处理平台与算法整理笔记 | 雷利锋个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大数据处理平台&amp;ensp;&amp;ensp; Hadoop 支持开发语言：Java  执行过程：将作业分解成更小的任务，将数据进行分区，每一个任务实例处理一个不同的分区，任务实例并行执行  Hadoop具体执行过程：  将MapReduce分解为顺序执行的Map阶段和Reduce阶段，每一个阶段包含一个Map&#x2F;Reduce任务并部署到Map&#x2F;Redcue节点上执行，当所有的Map&#x2F;Reduce任务结束当">
+  <meta name="description" content="大数据处理平台各类大数据处理平台的优劣    名称 量级 计算模型 支持语言 用途 优点 缺点     Hadoop 重 MR Java 大数据集上的数据密集型和计算密集型任务 同时提供数据存储和计算能力，伸缩性好，适合超大数据集的分析处理 集群可用性差，缺失安全模型，对小文件支持差，需要全局同步，处理小规模数据的速度不一定比串行程序快   GridGain 重 MR Java 基于内存的大数据处">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MapReduce大数据处理平台与算法">
+<meta property="og:title" content="MapReduce大数据处理平台与算法整理笔记">
 <meta property="og:url" content="http://yoursite.com/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="雷利锋个人博客">
-<meta property="og:description" content="大数据处理平台&amp;ensp;&amp;ensp; Hadoop 支持开发语言：Java  执行过程：将作业分解成更小的任务，将数据进行分区，每一个任务实例处理一个不同的分区，任务实例并行执行  Hadoop具体执行过程：  将MapReduce分解为顺序执行的Map阶段和Reduce阶段，每一个阶段包含一个Map&#x2F;Reduce任务并部署到Map&#x2F;Redcue节点上执行，当所有的Map&#x2F;Reduce任务结束当">
+<meta property="og:description" content="大数据处理平台各类大数据处理平台的优劣    名称 量级 计算模型 支持语言 用途 优点 缺点     Hadoop 重 MR Java 大数据集上的数据密集型和计算密集型任务 同时提供数据存储和计算能力，伸缩性好，适合超大数据集的分析处理 集群可用性差，缺失安全模型，对小文件支持差，需要全局同步，处理小规模数据的速度不一定比串行程序快   GridGain 重 MR Java 基于内存的大数据处">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Hadoop.JPG">
+<meta property="og:image" content="http://yoursite.com/img/Hadoop.JPG">
 <meta property="og:image" content="http://yoursite.com/img/Mars.JPG">
 <meta property="og:image" content="http://yoursite.com/img/Phoenix.JPG">
 <meta property="og:image" content="http://yoursite.com/img/Disco.JPG">
 <meta property="og:image" content="http://yoursite.com/img/Twister.JPG">
+<meta property="og:image" content="http://yoursite.com/img/Haloop.jpg">
+<meta property="og:image" content="http://yoursite.com/img/iMapReduce.jpg">
+<meta property="og:image" content="http://yoursite.com/img/iHadoop.jpg">
+<meta property="og:image" content="http://yoursite.com/img/PrIter.jpg">
+<meta property="og:image" content="http://yoursite.com/img/Dryad.jpg">
+<meta property="og:image" content="http://yoursite.com/img/Spark.jpg">
 <meta property="article:published_time" content="2020-08-30T12:04:02.000Z">
-<meta property="article:modified_time" content="2020-09-20T11:02:14.776Z">
+<meta property="article:modified_time" content="2020-09-20T12:26:20.433Z">
 <meta property="article:author" content="雷利锋">
 <meta property="article:tag" content="mapreduce">
 <meta property="article:tag" content="大数据">
 <meta property="article:tag" content="Hadoop">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Hadoop.JPG">
+<meta name="twitter:image" content="http://yoursite.com/img/Hadoop.JPG">
   
     <link rel="alternative" href="/atom.xml" title="雷利锋个人博客" type="application/atom+xml">
   
@@ -182,7 +188,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MapReduce大数据处理平台与算法
+      MapReduce大数据处理平台与算法整理笔记
     </h1>
   
 
@@ -195,12 +201,144 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="大数据处理平台"><a href="#大数据处理平台" class="headerlink" title="大数据处理平台"></a>大数据处理平台</h1><p>&ensp;&ensp;</p>
+        <h1 id="大数据处理平台"><a href="#大数据处理平台" class="headerlink" title="大数据处理平台"></a>大数据处理平台</h1><h2 id="各类大数据处理平台的优劣"><a href="#各类大数据处理平台的优劣" class="headerlink" title="各类大数据处理平台的优劣"></a>各类大数据处理平台的优劣</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>量级</th>
+<th>计算模型</th>
+<th>支持语言</th>
+<th>用途</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hadoop</td>
+<td>重</td>
+<td>MR</td>
+<td>Java</td>
+<td>大数据集上的数据密集型和计算密集型任务</td>
+<td>同时提供数据存储和计算能力，伸缩性好，适合超大数据集的分析处理</td>
+<td>集群可用性差，缺失安全模型，对小文件支持差，需要全局同步，处理小规模数据的速度不一定比串行程序快</td>
+</tr>
+<tr>
+<td>GridGain</td>
+<td>重</td>
+<td>MR</td>
+<td>Java</td>
+<td>基于内存的大数据处理</td>
+<td>对任务无特定要求，适用性好，可以在网络是执行</td>
+<td>不支持任何非Java应用；只提供了分布式计算支持，没有分布式文件系统，reduce阶段前缺少数据预处理</td>
+</tr>
+<tr>
+<td>Mars</td>
+<td>轻</td>
+<td>MR</td>
+<td>C++</td>
+<td>利用GPU进行大数据处理</td>
+<td>支持GPU；允许在单机上利用不同的处理器；在Map和Reduce阶段之前存在两次预处理过程</td>
+<td>GPU线程不支持动态调度；不支持运行时拿出分配空间；预处理操作昂贵</td>
+</tr>
+<tr>
+<td>Phoenix</td>
+<td>轻</td>
+<td>MR</td>
+<td>C/C++</td>
+<td>基于内存的大数据处理</td>
+<td>独立运行，无需提前部署；利用共享内存缓冲区实现通信，避免因数据复制产生开销</td>
+<td>不能自动执行迭代算法；无高效的异常处理机制；预处理操作昂贵</td>
+</tr>
+<tr>
+<td>Twister</td>
+<td>轻</td>
+<td>迭代MR</td>
+<td>Java</td>
+<td>迭代算法，大数据处理</td>
+<td>有效支持迭代算法，提供数据管理工具；在Combine阶段，收集所有Reduce实例输出结果，用户可以通过本地磁盘访问数据</td>
+<td>任务调度机制不如Hadoop有效；需要把大数据文件分为多个小文件</td>
+</tr>
+<tr>
+<td>Disco</td>
+<td>重</td>
+<td>MR</td>
+<td>Erlang,Python</td>
+<td>HTTP协议下的大数据处理</td>
+<td>采用轮询的通信机制，通过HTTP的方式传输数据，适用于web环境</td>
+<td>轮询时间间隔难以确定，降低算法执行性能</td>
+</tr>
+<tr>
+<td>HaLoop</td>
+<td>重</td>
+<td>迭代MR</td>
+<td>Java</td>
+<td>Hadoop的迭代计算优化版本</td>
+<td>更好的支持迭代算法，减少作业开销，增加迭代终止条件的判定</td>
+<td>静态数据和动态数据不能完全分离，导致无效I/O模型较复杂，抽象程度不高</td>
+</tr>
+<tr>
+<td>iMapReduce</td>
+<td>重</td>
+<td>迭代MR</td>
+<td>Java</td>
+<td>Hadoop的迭代计算优化版本</td>
+<td>迭代处理模型优化，避免反复的作业调度开销；优化的动态数据和静态数据管理；避免反复的数据加载和传输开销；支持任务异步执行，避免同步开销</td>
+<td>要求Map实例和Reduce实例数量一样，Map阶段和reduce阶段绑定，调度缺乏灵活性</td>
+</tr>
+<tr>
+<td>iHadoop</td>
+<td>重</td>
+<td>迭代MR</td>
+<td>Java</td>
+<td>Hadoop的迭代计算优化版本</td>
+<td>支持 Map 任务和 Reduce 任务的异步执行，减少同步代价</td>
+<td>缺少静态数据和动态数据的组合管理,无法避免静态数据的传输和处理开销</td>
+</tr>
+<tr>
+<td>PrIter</td>
+<td>重</td>
+<td>迭代MR</td>
+<td>Java</td>
+<td>适用于部分迭代算法的迭代计算</td>
+<td>高效的优先级调度可以加速迭代收敛,通过理论推导保证算法执行的准确性</td>
+<td>部分算法存在优先级, 因此支持算法有限</td>
+</tr>
+<tr>
+<td>Dryad</td>
+<td>轻</td>
+<td>类似MR</td>
+<td>Java</td>
+<td>大数据处理可高度自定义处理算法</td>
+<td>简化大规模分布式编程的难度，提供给用户一个简单通用的分布式运算框架</td>
+<td>由于任务形式自由，因此任务管理并不高效</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>轻</td>
+<td>类似MR</td>
+<td>Java，Scala，Python，R</td>
+<td>基于内存的大数据处理迭代计算</td>
+<td>可与Hadoop完整结合；保证容错的前提下，内存存储数据，数据访问速度变快</td>
+<td>数据分区能力有限，各台机器计算任务分配不平均，负载不均衡</td>
+</tr>
+<tr>
+<td>Flink</td>
+<td>轻</td>
+<td>类似MR</td>
+<td>Java，Scala，Python</td>
+<td>分布式流处理大数据流计算框架</td>
+<td>暂等调研</td>
+<td>暂等调研</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&ensp;&ensp;</p>
 <h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a><strong>Hadoop</strong></h3><ul>
-<li><p><strong>支持开发语言</strong>：<strong>Java</strong></p>
-</li>
-<li><p><strong>执行过程：</strong>将作业分解成更小的任务，将数据进行<strong>分区</strong>，每一个<strong>任务实例</strong>处理一个不同的分区，任务实例<strong>并行</strong>执行</p>
-</li>
+<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
+<li><strong>执行过程：</strong>将作业分解成更小的任务，将数据进行<strong>分区</strong>，每一个<strong>任务实例</strong>处理一个不同的分区，任务实例<strong>并行</strong>执行</li>
 <li><p><strong>Hadoop具体执行过程</strong>：</p>
 <ul>
 <li>将<strong>MapReduce</strong>分解为顺序执行的<strong>Map</strong>阶段和<strong>Reduce</strong>阶段，每一个阶段包含一个<strong>Map/Reduce</strong>任务并部署到<strong>Map/Redcue节点</strong>上执行，当所有的<strong>Map/Reduce任务结束</strong>当前<strong>阶段</strong>才结束，执行下一个阶段</li>
@@ -209,16 +347,14 @@
 </li>
 <li><p><strong>Hadoop处理的是用户自定义的键值对，Map阶段的输出是Reduce阶段的输入</strong></p>
 </li>
-<li><p><strong>MapReduce先将数据分成M份作为M个节点的输入，计算后的结果通过hash函数存储到R个文件里；最终R个Reduce节点接收M*R个文件，每个节点处理M个文件</strong></p>
-</li>
-<li><p><strong>最新的框架还提供ResourceManager和ApplicationManager</strong>；</p>
-<ul>
+<li><strong>MapReduce先将数据分成M份作为M个节点的输入，计算后的结果通过hash函数存储到R个文件里；最终R个Reduce节点接收M*R个文件，每个节点处理M个文件</strong></li>
+<li><strong>最新的框架还提供ResourceManager和ApplicationManager</strong>；<ul>
 <li><strong>ResourceManager</strong>提供<strong>统一的资源调度</strong></li>
 <li><strong>ApplicationManager</strong>跟踪每个节点<strong>状态</strong></li>
 </ul>
 </li>
 </ul>
-<p><img src="./img/Hadoop.JPG" alt="avatar"><br>&ensp;&ensp;</p>
+<p><img src="/img/Hadoop.JPG" alt="avatar"><br>&ensp;&ensp;</p>
 <h3 id="GridGain"><a href="#GridGain" class="headerlink" title="GridGain"></a>GridGain</h3><ul>
 <li><strong>支持语言</strong>：<strong>Java</strong></li>
 <li><strong>数据存储提供一种基于内存的、实时和易伸缩的数据网格</strong></li>
@@ -277,7 +413,7 @@
 <h3 id="Haloop"><a href="#Haloop" class="headerlink" title="Haloop"></a>Haloop</h3><ul>
 <li><strong>支持开发语言</strong>：<strong>Java</strong></li>
 <li><strong>在Hadoop mapReduce上扩展的迭代计算框架</strong><ul>
-<li>*<em>编程接口更加适用于迭代算法 *</em></li>
+<li><strong>编程接口更加适用于迭代算法 </strong></li>
 <li><strong>单节点支持多Map/Reduce任务</strong></li>
 <li><strong>实现迭代终止条件的检测</strong></li>
 <li><strong>任务尽量满足本地计算的特性，两次迭代任务尽量使用相同的数据，对没有变化的数据进行本地存储</strong></li>
@@ -286,7 +422,7 @@
 </li>
 <li><strong>仍有的缺点：</strong><ul>
 <li><strong>动态和静态数据无法分离</strong></li>
-<li><strong>没有一个客观的停止迭代的标准</strong></li>
+<li><strong>没有一个客观的停止迭代的标准</strong><br><img src="/img/Haloop.jpg" alt="avatar"></li>
 </ul>
 </li>
 </ul>
@@ -303,7 +439,7 @@
 <li><strong>传统的Map/Reduce批处理模型缺点</strong><ul>
 <li><strong>反复的作业调度开销</strong></li>
 <li><strong>反复的数据加载和传输开销</strong></li>
-<li><strong>反复的任务同步开销</strong></li>
+<li><strong>反复的任务同步开销</strong><br><img src="/img/iMapReduce.jpg" alt="avatar"></li>
 </ul>
 </li>
 </ul>
@@ -316,14 +452,14 @@
 <li><strong>没有静态和动态数据的组合管理，更易管理</strong></li>
 </ul>
 </li>
-<li><strong>缺点：无法避免传输处理数据的开销</strong></li>
+<li><strong>缺点：无法避免传输处理数据的开销</strong><br><img src="/img/iHadoop.jpg" alt="avatar"></li>
 </ul>
 <p>&ensp;&ensp;</p>
 <h3 id="prIter"><a href="#prIter" class="headerlink" title="prIter"></a>prIter</h3><ul>
 <li><strong>支持开发语言</strong>：<strong>Java</strong></li>
 <li><strong>基于Hadoop的支持优先级迭代计算框架</strong></li>
 <li><strong>prIter认为只有极少数的节点对计算的收敛起决定作用，而其他大多数对收敛贡献有限</strong></li>
-<li><strong>加入了优先级计算执行引擎，支持多个优先级算法，如PageRank、SSSP、WCC、Adsorption</strong></li>
+<li><strong>加入了优先级计算执行引擎，支持多个优先级算法，如PageRank、SSSP、WCC、Adsorption</strong><br><img src="/img/PrIter.jpg" alt="avatar"></li>
 </ul>
 <p>&ensp;&ensp;</p>
 <h3 id="Dryad"><a href="#Dryad" class="headerlink" title="Dryad"></a>Dryad</h3><ul>
@@ -336,7 +472,7 @@
 </li>
 <li><strong>优点</strong><ul>
 <li><strong>更加灵活的编程模型</strong></li>
-<li><strong>完善的任务管理和容错机制</strong></li>
+<li><strong>完善的任务管理和容错机制</strong><br><img src="/img/Dryad.jpg" alt="avatar"></li>
 </ul>
 </li>
 </ul>
@@ -355,7 +491,7 @@
 <li><strong>算子（操作）</strong><ul>
 <li><strong>Map/Reduce算子：执行Map/Reduce操作</strong></li>
 <li><strong>Transformation算子：执行数据的转换</strong></li>
-<li><strong>Action算子：数据的汇总和保存操作</strong></li>
+<li><strong>Action算子：数据的汇总和保存操作</strong><br><img src="/img/Spark.jpg" alt="avatar"></li>
 </ul>
 </li>
 </ul>
