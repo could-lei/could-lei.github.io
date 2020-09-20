@@ -187,8 +187,10 @@
       
         <h1 id="大数据处理平台"><a href="#大数据处理平台" class="headerlink" title="大数据处理平台"></a>大数据处理平台</h1><p>&ensp;&ensp;</p>
 <h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a><strong>Hadoop</strong></h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>执行过程：</strong>将作业分解成更小的任务，将数据进行<strong>分区</strong>，每一个<strong>任务实例</strong>处理一个不同的分区，任务实例<strong>并行</strong>执行</li>
+<li><p><strong>支持开发语言</strong>：<strong>Java</strong></p>
+</li>
+<li><p><strong>执行过程：</strong>将作业分解成更小的任务，将数据进行<strong>分区</strong>，每一个<strong>任务实例</strong>处理一个不同的分区，任务实例<strong>并行</strong>执行</p>
+</li>
 <li><p><strong>Hadoop具体执行过程</strong>：</p>
 <ul>
 <li>将<strong>MapReduce</strong>分解为顺序执行的<strong>Map</strong>阶段和<strong>Reduce</strong>阶段，每一个阶段包含一个<strong>Map/Reduce</strong>任务并部署到<strong>Map/Redcue节点</strong>上执行，当所有的<strong>Map/Reduce任务结束</strong>当前<strong>阶段</strong>才结束，执行下一个阶段</li>
@@ -197,14 +199,16 @@
 </li>
 <li><p><strong>Hadoop处理的是用户自定义的键值对，Map阶段的输出是Reduce阶段的输入</strong></p>
 </li>
-<li><strong>MapReduce先将数据分成M份作为M个节点的输入，计算后的结果通过hash函数存储到R个文件里；最终R个Reduce节点接收M*R个文件，每个节点处理M个文件</strong></li>
-<li><strong>最新的框架还提供ResourceManager和ApplicationManager</strong>；<ul>
+<li><p><strong>MapReduce先将数据分成M份作为M个节点的输入，计算后的结果通过hash函数存储到R个文件里；最终R个Reduce节点接收M*R个文件，每个节点处理M个文件</strong></p>
+</li>
+<li><p><strong>最新的框架还提供ResourceManager和ApplicationManager</strong>；</p>
+<ul>
 <li><strong>ResourceManager</strong>提供<strong>统一的资源调度</strong></li>
 <li><strong>ApplicationManager</strong>跟踪每个节点<strong>状态</strong></li>
 </ul>
 </li>
 </ul>
-<p><img src="/img/Hadoop.jpg" alt="avatar"><br>&ensp;&ensp;</p>
+<p><img src="/img/Hadoop.JPG" alt="avatar"><br>&ensp;&ensp;</p>
 <h3 id="GridGain"><a href="#GridGain" class="headerlink" title="GridGain"></a>GridGain</h3><ul>
 <li><strong>支持语言</strong>：<strong>Java</strong></li>
 <li><strong>数据存储提供一种基于内存的、实时和易伸缩的数据网格</strong></li>
@@ -229,7 +233,7 @@
 <li><strong>ReduceSplit</strong>将<strong>相同key</strong>分到<strong>同一组Reduce线程</strong></li>
 </ul>
 </li>
-<li>Mars可以以<strong>最小的代价快速部署代码</strong>至分布式环境并<strong>整合GPU资源</strong><br><img src="/img/Mars.jpg" alt="avatar"></li>
+<li>Mars可以以<strong>最小的代价快速部署代码</strong>至分布式环境并<strong>整合GPU资源</strong><br><img src="/img/Mars.JPG" alt="avatar"></li>
 </ul>
 <p>&ensp;&ensp;</p>
 <h3 id="Phoenix"><a href="#Phoenix" class="headerlink" title="Phoenix"></a>Phoenix</h3><ul>
@@ -238,7 +242,7 @@
 <li><strong>执行过程：</strong><ul>
 <li>提前编写<strong>Map/Reduce函数，并指定数据</strong></li>
 <li>启动多个线程，<strong>将数据划分为M块</strong>，在每一个块上<strong>调用Map函数</strong>，并将<strong>中间结果</strong>输出到<strong>内存</strong></li>
-<li>将<strong>相同键对应的所有值传递给Reduce函数</strong>，再通过<strong>逐步合并</strong>为单一的键值对<br><img src="/img/Phoenix.jpg" alt="avatar"></li>
+<li>将<strong>相同键对应的所有值传递给Reduce函数</strong>，再通过<strong>逐步合并</strong>为单一的键值对<br><img src="/img/Phoenix.JPG" alt="avatar"></li>
 </ul>
 </li>
 </ul>
@@ -246,7 +250,7 @@
 <h3 id="Disco"><a href="#Disco" class="headerlink" title="Disco"></a>Disco</h3><ul>
 <li><strong>支持开发语言</strong>：<strong>Python</strong></li>
 <li><strong>适用于低可靠性的集群系统、多核计算机和云平台之上</strong></li>
-<li><strong>系统采用主从结构；用户提供将编写好的脚步上传到主节点；主节点再为每个从节点分配任务，节点之间通过http协议进行通信</strong><br><img src="/img/Disco.jpg" alt="avatar"></li>
+<li><strong>系统采用主从结构；用户提供将编写好的脚步上传到主节点；主节点再为每个从节点分配任务，节点之间通过http协议进行通信</strong><br><img src="/img/Disco.JPG" alt="avatar"></li>
 </ul>
 <p>&ensp;&ensp;</p>
 <h3 id="Twister"><a href="#Twister" class="headerlink" title="Twister"></a>Twister</h3><ul>
@@ -255,7 +259,7 @@
 <li><strong>在Hadoop上的改进</strong><ul>
 <li><strong>Hadoop上一个节点只能包含一个Map/Reduce任务，而twister可以包含多个Map/Reduce任务</strong></li>
 <li><strong>Map/Reduce任务静态数据采用内存或本地缓存</strong></li>
-<li><strong>在reduce任务之后添加了combine任务判断迭代是否完成</strong><br><img src="/img/Twister.jpg" alt="avatar"></li>
+<li><strong>在reduce任务之后添加了combine任务判断迭代是否完成</strong><br><img src="/img/Twister.JPG" alt="avatar"></li>
 </ul>
 </li>
 </ul>
@@ -263,7 +267,7 @@
 <h3 id="Haloop"><a href="#Haloop" class="headerlink" title="Haloop"></a>Haloop</h3><ul>
 <li><strong>支持开发语言</strong>：<strong>Java</strong></li>
 <li><strong>在Hadoop mapReduce上扩展的迭代计算框架</strong><ul>
-<li><strong>编程接口更加适用于迭代算法 </strong></li>
+<li>*<em>编程接口更加适用于迭代算法 *</em></li>
 <li><strong>单节点支持多Map/Reduce任务</strong></li>
 <li><strong>实现迭代终止条件的检测</strong></li>
 <li><strong>任务尽量满足本地计算的特性，两次迭代任务尽量使用相同的数据，对没有变化的数据进行本地存储</strong></li>
