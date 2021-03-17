@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/img/dubbo-architecture-project.jpg">
 <meta property="og:image" content="http://yoursite.com/img/dubbo-architecture-future.jpg">
 <meta property="article:published_time" content="2021-03-17T11:54:11.000Z">
-<meta property="article:modified_time" content="2021-03-17T13:22:25.839Z">
+<meta property="article:modified_time" content="2021-03-17T13:23:16.615Z">
 <meta property="article:author" content="雷利锋">
 <meta property="article:tag" content="dubbo">
 <meta property="article:tag" content="springboot">
@@ -204,8 +204,8 @@
 <li>随着服务的运行越来越久之后，服务需要多少机器支撑，什么时候增加机器；</li>
 </ul>
 <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p><img src="/img/dubbo-architecture-project.jpg" alt="avatar"><br>&ensp;&ensp;节点角色说明：<br>| 节点 | 角色说明 |<br>| —- | —- |<br>|provider|暴露服务的服务提供者|<br>|consumer|调用远程服务的服务消费方|<br>|registry|服务注册与发现的注册中心|<br>|monitor|统计服务的调用次数和调用时间的监控中心|<br>|container|服务运行容器|</p>
-<h2 id="流动计算架构-1"><a href="#流动计算架构-1" class="headerlink" title="流动计算架构"></a>流动计算架构</h2><p><img src="/img/dubbo-architecture-future.jpg" alt="avatar"><br>&ensp;&ensp;当服务集群规模进一步扩大，带动IT治理结构进一步升级，需要实现动态部署，进行流动计算，现有分布式服务架构不会带来阻力。<br>|节点|角色说明|<br>| —- | —- |<br>|Deployer|自动部署服务的本地代理|<br>|Repository|仓库用于存储服务应用发布包|<br>|Scheduler|调度中心基于访问压力自动增减服务提供者|<br>|Admin|统一管理控制台|<br>|registry|服务注册与发现的注册中心|<br>|monitor|统计服务的调用次数和调用时间的监控中心|</p>
-<h1 id="dubbo-springboot配置"><a href="#dubbo-springboot配置" class="headerlink" title="dubbo+springboot配置"></a>dubbo+springboot配置</h1><p>&ensp;&ensp;本次开发分为三个模块provider，iprovider,consumer；<br>|模块名|模块说明|<br>| —- | —- |<br>|provider|服务提供者|<br>|iprovider|接口服务提供者|<br>|consumer|服务消费者|</p>
+<h2 id="流动计算架构-1"><a href="#流动计算架构-1" class="headerlink" title="流动计算架构"></a>流动计算架构</h2><p><img src="/img/dubbo-architecture-future.jpg" alt="avatar"><br>&ensp;&ensp;当服务集群规模进一步扩大，带动IT治理结构进一步升级，需要实现动态部署，进行流动计算，现有分布式服务架构不会带来阻力。<br>| 节点 | 角色说明 |<br>| —- | —- |<br>|Deployer|自动部署服务的本地代理|<br>|Repository|仓库用于存储服务应用发布包|<br>|Scheduler|调度中心基于访问压力自动增减服务提供者|<br>|Admin|统一管理控制台|<br>|registry|服务注册与发现的注册中心|<br>|monitor|统计服务的调用次数和调用时间的监控中心|</p>
+<h1 id="dubbo-springboot配置"><a href="#dubbo-springboot配置" class="headerlink" title="dubbo+springboot配置"></a>dubbo+springboot配置</h1><p>&ensp;&ensp;本次开发分为三个模块provider，iprovider,consumer；<br>| 模块名 | 模块说明 |<br>| —- | —- |<br>|provider|服务提供者|<br>|iprovider|接口服务提供者|<br>|consumer|服务消费者|</p>
 
       
 
