@@ -165,6 +165,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-dubbo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/17/dubbo/">Dubbo+springboot</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/17/dubbo/" class="archive-article-date">
+  	<time datetime="2021-03-17T11:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="dubbo背景"><a href="#dubbo背景" class="headerlink" title="dubbo背景"></a>dubbo背景</h1><p>！<a href="/img/dubbo-architecture.jpg">avatar</a><br>随着互联网的发展，网站应用越来越大，简单的单一的web架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统保障分布式应用有序运行，资源调度。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/17/dubbo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MapReduce大数据处理平台与算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -185,8 +263,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="大数据处理平台"><a href="#大数据处理平台" class="headerlink" title="大数据处理平台"></a>大数据处理平台</h1><h2 id="各类大数据处理平台的优劣"><a href="#各类大数据处理平台的优劣" class="headerlink" title="各类大数据处理平台的优劣"></a>各类大数据处理平台的优劣</h2><div class="table-container">
-<table>
+        <h1 id="大数据处理平台"><a href="#大数据处理平台" class="headerlink" title="大数据处理平台"></a>大数据处理平台</h1><h2 id="各类大数据处理平台的优劣"><a href="#各类大数据处理平台的优劣" class="headerlink" title="各类大数据处理平台的优劣"></a>各类大数据处理平台的优劣</h2><table>
 <thead>
 <tr>
 <th>名称</th>
@@ -198,8 +275,7 @@
 <th>缺点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Hadoop</td>
 <td>重</td>
 <td>MR</td>
@@ -316,170 +392,8 @@
 <td>暂等调研</td>
 <td>暂等调研</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p>&ensp;&ensp;</p>
-<h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a><strong>Hadoop</strong></h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>执行过程：</strong>将作业分解成更小的任务，将数据进行<strong>分区</strong>，每一个<strong>任务实例</strong>处理一个不同的分区，任务实例<strong>并行</strong>执行</li>
-<li><p><strong>Hadoop具体执行过程</strong>：</p>
-<ul>
-<li>将<strong>MapReduce</strong>分解为顺序执行的<strong>Map</strong>阶段和<strong>Reduce</strong>阶段，每一个阶段包含一个<strong>Map/Reduce</strong>任务并部署到<strong>Map/Redcue节点</strong>上执行，当所有的<strong>Map/Reduce任务结束</strong>当前<strong>阶段</strong>才结束，执行下一个阶段</li>
-<li>任务执行前，将<strong>任务下载到数据节点上</strong>，而不是迁移数据到执行节点</li>
-</ul>
-</li>
-<li><p><strong>Hadoop处理的是用户自定义的键值对，Map阶段的输出是Reduce阶段的输入</strong></p>
-</li>
-<li><strong>MapReduce先将数据分成M份作为M个节点的输入，计算后的结果通过hash函数存储到R个文件里；最终R个Reduce节点接收M*R个文件，每个节点处理M个文件</strong></li>
-<li><strong>最新的框架还提供ResourceManager和ApplicationManager</strong>；<ul>
-<li><strong>ResourceManager</strong>提供<strong>统一的资源调度</strong></li>
-<li><strong>ApplicationManager</strong>跟踪每个节点<strong>状态</strong></li>
-</ul>
-</li>
-</ul>
-<p><img src="/img/Hadoop.JPG" alt="avatar"><br>&ensp;&ensp;</p>
-<h3 id="GridGain"><a href="#GridGain" class="headerlink" title="GridGain"></a>GridGain</h3><ul>
-<li><strong>支持语言</strong>：<strong>Java</strong></li>
-<li><strong>数据存储提供一种基于内存的、实时和易伸缩的数据网格</strong></li>
-<li><strong>与Hadoop的区别</strong><ul>
-<li>GridGain的作业仅支持<strong>单一的reduce实例</strong>，在reduce阶段<strong>不支持并行功能</strong></li>
-<li>Map任务<strong>返回单一值</strong></li>
-<li>对于map阶段的<strong>中间结果不会进行排序和合并</strong></li>
-<li>用户可以<strong>随意创建和终止Map任务</strong>，较为灵活</li>
-<li><strong>本地性强，强制在本地执行，效率高</strong><br>&ensp;&ensp;</li>
-</ul>
-</li>
-</ul>
-<h3 id="Mars"><a href="#Mars" class="headerlink" title="Mars"></a>Mars</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>C++</strong></li>
-<li><strong>是一种基于GPU的MapReduce框架；在初始阶段在GPU中开启大量线程；并将Map/Reduce任务分发到线程上；并通过无锁的方式控制数据并发</strong></li>
-<li><strong>输入数据为小数量的键值对</strong></li>
-<li><strong>执行过程：Map、Group、Reduce阶段</strong><ul>
-<li>将<strong>硬盘的数据调入内存</strong>，并<strong>转化为键值对格式</strong></li>
-<li>初始化GPU，<strong>定义GPU线程组的数量和每个线程组内线程的数量</strong></li>
-<li><strong>MapSplit将数据调入GPU线程中</strong>；通过<strong>MapCount函数计算输出的中间结果的数量和规模</strong>，并统计出一个局部直方图并<strong>执行前缀和函数</strong>，<strong>获得</strong>每个线程的<strong>输出大小以及写入位置</strong>；由于中间结果的写入位置由前缀和函数得出不会读写冲突</li>
-<li><strong>对中间结果进行排序和hash分组，再组内排序</strong></li>
-<li><strong>ReduceSplit</strong>将<strong>相同key</strong>分到<strong>同一组Reduce线程</strong></li>
-</ul>
-</li>
-<li>Mars可以以<strong>最小的代价快速部署代码</strong>至分布式环境并<strong>整合GPU资源</strong><br><img src="/img/Mars.JPG" alt="avatar"></li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="Phoenix"><a href="#Phoenix" class="headerlink" title="Phoenix"></a>Phoenix</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>C++</strong></li>
-<li>适用于<strong>多核或多处理器</strong>的<strong>共享内存</strong>的分布式计算平台</li>
-<li><strong>执行过程：</strong><ul>
-<li>提前编写<strong>Map/Reduce函数，并指定数据</strong></li>
-<li>启动多个线程，<strong>将数据划分为M块</strong>，在每一个块上<strong>调用Map函数</strong>，并将<strong>中间结果</strong>输出到<strong>内存</strong></li>
-<li>将<strong>相同键对应的所有值传递给Reduce函数</strong>，再通过<strong>逐步合并</strong>为单一的键值对<br><img src="/img/Phoenix.JPG" alt="avatar"></li>
-</ul>
-</li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="Disco"><a href="#Disco" class="headerlink" title="Disco"></a>Disco</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Python</strong></li>
-<li><strong>适用于低可靠性的集群系统、多核计算机和云平台之上</strong></li>
-<li><strong>系统采用主从结构；用户提供将编写好的脚步上传到主节点；主节点再为每个从节点分配任务，节点之间通过http协议进行通信</strong><br><img src="/img/Disco.JPG" alt="avatar"></li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="Twister"><a href="#Twister" class="headerlink" title="Twister"></a>Twister</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>输入数据由静态数据和动态数据组合；静态数据与动态数据完成一轮运算后转化为新的动态数据</strong></li>
-<li><strong>在Hadoop上的改进</strong><ul>
-<li><strong>Hadoop上一个节点只能包含一个Map/Reduce任务，而twister可以包含多个Map/Reduce任务</strong></li>
-<li><strong>Map/Reduce任务静态数据采用内存或本地缓存</strong></li>
-<li><strong>在reduce任务之后添加了combine任务判断迭代是否完成</strong><br><img src="/img/Twister.JPG" alt="avatar"></li>
-</ul>
-</li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="Haloop"><a href="#Haloop" class="headerlink" title="Haloop"></a>Haloop</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>在Hadoop mapReduce上扩展的迭代计算框架</strong><ul>
-<li><strong>编程接口更加适用于迭代算法 </strong></li>
-<li><strong>单节点支持多Map/Reduce任务</strong></li>
-<li><strong>实现迭代终止条件的检测</strong></li>
-<li><strong>任务尽量满足本地计算的特性，两次迭代任务尽量使用相同的数据，对没有变化的数据进行本地存储</strong></li>
-<li><strong>增加索引加强数据访问</strong></li>
-</ul>
-</li>
-<li><strong>仍有的缺点：</strong><ul>
-<li><strong>动态和静态数据无法分离</strong></li>
-<li><strong>没有一个客观的停止迭代的标准</strong><br><img src="/img/Haloop.jpg" alt="avatar"></li>
-</ul>
-</li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="iMapReduce"><a href="#iMapReduce" class="headerlink" title="iMapReduce"></a>iMapReduce</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>基于Hadoop Map/Reduce的批处理迭代计算模型</strong></li>
-<li><strong>在Hadoop上的改进</strong><ul>
-<li><strong>将reduce任务的结果回转给Map任务</strong></li>
-<li><strong>通过维护本地静态数据来避免加载传输静态数据</strong></li>
-<li><strong>允许异步执行map任务来避免反复的任务同步开销</strong></li>
-</ul>
-</li>
-<li><strong>传统的Map/Reduce批处理模型缺点</strong><ul>
-<li><strong>反复的作业调度开销</strong></li>
-<li><strong>反复的数据加载和传输开销</strong></li>
-<li><strong>反复的任务同步开销</strong><br><img src="/img/iMapReduce.jpg" alt="avatar"></li>
-</ul>
-</li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="iHadoop"><a href="#iHadoop" class="headerlink" title="iHadoop"></a>iHadoop</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>类似前者IMapReduce的迭代计算框架</strong></li>
-<li><strong>在Hadoop上的改进</strong><ul>
-<li><strong>实现了mapredcue的异步迭代</strong></li>
-<li><strong>没有静态和动态数据的组合管理，更易管理</strong></li>
-</ul>
-</li>
-<li><strong>缺点：无法避免传输处理数据的开销</strong><br><img src="/img/iHadoop.jpg" alt="avatar"></li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="prIter"><a href="#prIter" class="headerlink" title="prIter"></a>prIter</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>基于Hadoop的支持优先级迭代计算框架</strong></li>
-<li><strong>prIter认为只有极少数的节点对计算的收敛起决定作用，而其他大多数对收敛贡献有限</strong></li>
-<li><strong>加入了优先级计算执行引擎，支持多个优先级算法，如PageRank、SSSP、WCC、Adsorption</strong><br><img src="/img/PrIter.jpg" alt="avatar"></li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="Dryad"><a href="#Dryad" class="headerlink" title="Dryad"></a>Dryad</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Java</strong></li>
-<li><strong>不是基于MapReduce模型，而是提出了一种通用的、粗粒度的、批处理式的计算模型</strong></li>
-<li><strong>组成</strong><ul>
-<li><strong>vertex计算节点：用户通过自定义vertex节点来实现运算逻辑；执行过程中用户的程序是顺序执行的</strong></li>
-<li><strong>channel数据通道：节点之间通过数据通道来进行数据传输</strong></li>
-</ul>
-</li>
-<li><strong>优点</strong><ul>
-<li><strong>更加灵活的编程模型</strong></li>
-<li><strong>完善的任务管理和容错机制</strong><br><img src="/img/Dryad.jpg" alt="avatar"></li>
-</ul>
-</li>
-</ul>
-<p>&ensp;&ensp;</p>
-<h3 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h3><ul>
-<li><strong>支持开发语言</strong>：<strong>Scala</strong>、<strong>Java</strong>、<strong>Python</strong>、<strong>R</strong></li>
-<li><strong>基于内存计算的开源集群计算平台</strong></li>
-<li><strong>运行模式</strong><ul>
-<li><strong>单节点本地运行模式</strong></li>
-<li><strong>单节点的伪分布式运行模式</strong></li>
-<li><strong>基于Standalone Deploy的分布式模式</strong></li>
-<li><strong>基于Hadoop yarn或Mesos的分布式模式</strong></li>
-</ul>
-</li>
-<li><strong>数据存储在弹性分布式数据集（RDD）中，支持粗粒度写操作和精确读到每一条记录；每次操作都保存到内存，并从内存中取数据</strong></li>
-<li><strong>算子（操作）</strong><ul>
-<li><strong>Map/Reduce算子：执行Map/Reduce操作</strong></li>
-<li><strong>Transformation算子：执行数据的转换</strong></li>
-<li><strong>Action算子：数据的汇总和保存操作</strong><br><img src="/img/Spark.jpg" alt="avatar"></li>
-</ul>
-</li>
-</ul>
-
+</tbody></table>
+        
       
 
       
@@ -669,30 +583,7 @@
 <blockquote>
 <p>如果一个数据集投射到n维空间上，可以找到一个超平面将它划分两侧则该数据集是线性可分；否则非线性可分</p>
 </blockquote>
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>&ensp;&ensp;旨在求出将训练数据进行线性划分的<strong>分离超平面</strong>。</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>简单</li>
-<li>易于实现</li>
-</ul>
-<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>&ensp;&ensp;$$f(x)=sign(w*x+b)$$</p>
-<blockquote>
-<p>sign(x)为<strong>符号函数</strong>。</p>
-</blockquote>
-<h2 id="策略（loss-function）"><a href="#策略（loss-function）" class="headerlink" title="策略（loss function）"></a>策略（loss function）</h2><p>$$L(w,b)=\sum\limits_{i=0}^M {|(w*xi+b)|}$$<br>该损失函数为原为<br>$$\frac{1}{||w||} {yi*{(w*xi+b)}}$$<br>,其中$${||w||} $$为w的L2范数，整体表示为误分类的点到超平面的距离，这个策略相比与其他的策略更加能直观的表述误分类点与损失函数的关系；此外<br>$${-yi*(w*xi+b)&gt;0} $$对于误分类的实例恒成立，此处易得<br>$$\frac{1}{||w||} {yi*{(w*xi+b)}}$$,所以所有的误分类点到超平面的距离和可以表示为<br>$$\frac{1}{||w||}\sum\limits_{i=0}^M {yi*{(w*xi+b)}}$$;在不考虑$${\frac{1}{||w||}}$$的情况下，就得到loss函数$$L(w,b)=\sum\limits_{i=0}^M {|(w*xi+b)|}$$，加入yi的原因我认为是原先L2范数中y的表达过于复杂，尤其在求导之后，通过恒等式的方式加入yi,求导更加简单根据奥卡姆剃刀原则，该方式可能更加好。</p>
-<blockquote>
-<p>L2范数是则坐标平方和的平方根；loss函数必须包含x和y才能求导</p>
-</blockquote>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="原始形式"><a href="#原始形式" class="headerlink" title="原始形式"></a>原始形式</h3><p>&ensp;&ensp;任意选择一个超平面，然后用梯度下降法不断地极小化目标函数。</p>
-<ul>
-<li>1、选取初始值w0,b0</li>
-<li>2、在训练集中选取数据（xi,yi）</li>
-<li>3、如果yi(w*xi+b)&lt;=0;w&lt;-w+ηyixi,b&lt;-b+ηyi</li>
-<li>4、转到2，直到训练集中没有误分类点<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#原始模式 处理数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(T,w,b)</span>:</span></span><br><span class="line">    x ,y= T[:,<span class="number">0</span>:<span class="number">-1</span>],T[:,<span class="number">-1</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> x + y</span><br><span class="line">        <span class="keyword">return</span> sign(reduce(sum, (w * x))+b)</span><br><span class="line">    result=np.array(list(map(f,x)))</span><br><span class="line">    <span class="keyword">return</span> result==y</span><br><span class="line"><span class="comment"># 感知机 原始模式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">perceptron</span><span class="params">(T,rate)</span>:</span></span><br><span class="line">    shape=T.shape</span><br><span class="line">    w0,b0=np.random.random((shape[<span class="number">1</span>]<span class="number">-1</span>,)),np.random.random((<span class="number">1</span>,))</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temporary=process(T,w0,b0)</span><br><span class="line">        <span class="keyword">if</span>  <span class="literal">False</span> <span class="keyword">in</span> temporary:</span><br><span class="line">            <span class="function"><span class="keyword">def</span> <span class="title">findFalse</span><span class="params">(temp)</span>:</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(len(temp)):</span><br><span class="line">                    <span class="keyword">if</span> temp[i]==<span class="literal">False</span>:</span><br><span class="line">                        <span class="keyword">return</span> i</span><br><span class="line">            temporary=T[findFalse(temporary)]</span><br><span class="line">            x,y=temporary[<span class="number">0</span>:<span class="number">-1</span>],temporary[<span class="number">-1</span>]</span><br><span class="line">            w0,b0=w0+rate*y*x,b0+rate*y</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> w0,b0</span><br></pre></td></tr></table></figure>
-<p>该方法还不是最好的办法，但是也可以求得最终结果。</p>
-<h1 id="对偶模式"><a href="#对偶模式" class="headerlink" title="对偶模式"></a>对偶模式</h1><p>与原始模式相同就是在原来的基础上减少了计算，将内积提前存储在矩阵上。</p>
-
+        
       
 
       
@@ -713,7 +604,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二分类模型，判别模型</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二分类模型</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">判别模型</a>
         		</li>
       		
 		</ul>
@@ -849,7 +744,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 雷利锋
+    		&copy; 2021 雷利锋
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -961,10 +856,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">二分类模型，判别模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">知识蒸馏</a>
               </li>
              
@@ -982,6 +873,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">二分类模型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">判别模型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
             
             <div class="clearfix"></div>
