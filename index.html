@@ -277,6 +277,7 @@
 </ul>
 <h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p><img src="/img/dubbo-architecture-project.jpg" alt="avatar"></p>
 <p>&ensp;&ensp;节点角色说明:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -284,10 +285,7 @@
 <th>角色说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>Phoenix</td>
-<td>轻</td>
-</tr>
+<tbody>
 <tr>
 <td>provider</td>
 <td>暴露服务的服务提供者</td>
@@ -308,10 +306,76 @@
 <td>container</td>
 <td>服务运行容器</td>
 </tr>
-</tbody></table>
-<h2 id="流动计算架构-1"><a href="#流动计算架构-1" class="headerlink" title="流动计算架构"></a>流动计算架构</h2><p><img src="/img/dubbo-architecture-future.jpg" alt="avatar"><br>&ensp;&ensp;当服务集群规模进一步扩大，带动IT治理结构进一步升级，需要实现动态部署，进行流动计算，现有分布式服务架构不会带来阻力。<br>| 节点 | 角色说明 |<br>| —- | —- |<br>| Deployer | 自动部署服务的本地代理 |<br>| Repository | 仓库用于存储服务应用发布包 |<br>| Scheduler | 调度中心基于访问压力自动增减服务提供者 |<br>| Admin | 统一管理控制台 |<br>| registry | 服务注册与发现的注册中心 |<br>| monitor | 统计服务的调用次数和调用时间的监控中心 |</p>
-<h1 id="dubbo-springboot配置"><a href="#dubbo-springboot配置" class="headerlink" title="dubbo+springboot配置"></a>dubbo+springboot配置</h1><p>&ensp;&ensp;本次开发分为三个模块provider，iprovider,consumer；<br>| 模块名 | 模块说明 |<br>| —- | —- |<br>| provider | 服务提供者 |<br>| iprovider | 接口服务提供者 |<br>| consumer | 服务消费者 |</p>
-
+</tbody>
+</table>
+</div>
+<h2 id="流动计算架构-1"><a href="#流动计算架构-1" class="headerlink" title="流动计算架构"></a>流动计算架构</h2><p><img src="/img/dubbo-architecture-future.jpg" alt="avatar"><br>&ensp;&ensp;当服务集群规模进一步扩大，带动IT治理结构进一步升级，需要实现动态部署，进行流动计算，现有分布式服务架构不会带来阻力。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>角色说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployer</td>
+<td>自动部署服务的本地代理</td>
+</tr>
+<tr>
+<td>Repository</td>
+<td>仓库用于存储服务应用发布包</td>
+</tr>
+<tr>
+<td>Scheduler</td>
+<td>调度中心基于访问压力自动增减服务提供者</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>统一管理控制台</td>
+</tr>
+<tr>
+<td>registry</td>
+<td>服务注册与发现的注册中心</td>
+</tr>
+<tr>
+<td>monitor</td>
+<td>统计服务的调用次数和调用时间的监控中心</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="dubbo-springboot配置"><a href="#dubbo-springboot配置" class="headerlink" title="dubbo+springboot配置"></a>dubbo+springboot配置</h1><p>&ensp;&ensp;本次开发分为三个模块provider，iprovider,consumer；</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模块名</th>
+<th>模块说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>provider</td>
+<td>服务提供者</td>
+</tr>
+<tr>
+<td>iprovider</td>
+<td>接口服务提供者</td>
+</tr>
+<tr>
+<td>consumer</td>
+<td>服务消费者</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="配置格式"><a href="#配置格式" class="headerlink" title="配置格式"></a>配置格式</h3><p>&ensp;&ensp;目前dubbo支持的所有配置都是.properties格式的，包括-D、ExternalizedConfiguration等，.properties中的所有配置项遵循一种path-base的配置格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 应用级别</span><br><span class="line">dubbo.&#123;config-type&#125;[.&#123;config-id&#125;].&#123;config-item&#125;&#x3D;&#123;config-item-value&#125;</span><br><span class="line"># 服务级别</span><br><span class="line">dubbo.service.&#123;interface-name&#125;[.&#123;method-name&#125;].&#123;config-item&#125;&#x3D;&#123;config-item-value&#125;</span><br><span class="line">dubbo.reference.&#123;interface-name&#125;[.&#123;method-name&#125;].&#123;config-item&#125;&#x3D;&#123;config-item-value&#125;</span><br><span class="line"># 多配置项</span><br><span class="line">dubbo.&#123;config-type&#125;s.&#123;config-id&#125;.&#123;config-item&#125;&#x3D;&#123;config-item-value&#125;</span><br></pre></td></tr></table></figure><br>&ensp;&ensp;如应用级别的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#dubbo应用名称</span><br><span class="line">dubbo.application.name&#x3D;demo-provider</span><br><span class="line">#服务注册中心注册</span><br><span class="line">dubbo.registry.address&#x3D;zookeeper:&#x2F;&#x2F;127.0.0.1:2181</span><br><span class="line">#dubbo协议端口号</span><br><span class="line">dubbo.protocol.port&#x3D;-1</span><br></pre></td></tr></table></figure><br>&ensp;&ensp;如服务级别的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#dubbo应用名称</span><br><span class="line">dubbo.application.name&#x3D;demo-provider</span><br><span class="line">#服务注册中心注册</span><br><span class="line">dubbo.registry.address&#x3D;zookeeper:&#x2F;&#x2F;127.0.0.1:2181</span><br><span class="line">#dubbo协议端口号</span><br><span class="line">dubbo.protocol.port&#x3D;-1</span><br></pre></td></tr></table></figure></p>
+<h3 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h3><h4 id="dubbo和springboot的配置"><a href="#dubbo和springboot的配置" class="headerlink" title="dubbo和springboot的配置"></a>dubbo和springboot的配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.dubbo&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;dubbo-spring-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.7.8&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.dubbo&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;dubbo&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.7.8&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="zookeeper配置"><a href="#zookeeper配置" class="headerlink" title="zookeeper配置"></a>zookeeper配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.zookeeper&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;zookeeper&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.4.8&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="参数validation配置"><a href="#参数validation配置" class="headerlink" title="参数validation配置"></a>参数validation配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;javax.validation&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;validation-api&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.0.Final&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hibernate-validator&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.1.0.Final&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="api配置"><a href="#api配置" class="headerlink" title="api配置"></a>api配置</h4><h4 id="提供者服务"><a href="#提供者服务" class="headerlink" title="提供者服务"></a>提供者服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dubbo.scan.base-packages&#x3D;com.</span><br></pre></td></tr></table></figure>
       
 
       
