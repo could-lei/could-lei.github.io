@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Flink实践 | 雷利锋个人博客</title>
+  <title>大数据 | 雷利锋个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="flink背景介绍 &amp;ensp;&amp;ensp;随着互联网的发展，网站应用越来越大，简单的单一的web架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统保障分布式应用有序运行，资源调度。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Flink实践">
-<meta property="og:url" content="http://yoursite.com/2021/03/17/flink%E5%AE%9E%E8%B7%B5/index.html">
+  <meta name="description" content="hdfs介绍&amp;ensp;&amp;ensp;hdfs是按照Google的论文GFS以Java编程实现的分布式文件系统，此外Hadoop和HBASE也是按照Google的论文写出的程序；&amp;ensp;&amp;ensp;hdfs由DataNode，NameNode，Secondary NameNode和client组成;其中DataNode由block数据块组成， 数据块数据块是HDFS系统中最小的存储单位，一个大文">
+<meta property="og:type" content="website">
+<meta property="og:title" content="大数据">
+<meta property="og:url" content="http://yoursite.com/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.html">
 <meta property="og:site_name" content="雷利锋个人博客">
-<meta property="og:description" content="flink背景介绍 &amp;ensp;&amp;ensp;随着互联网的发展，网站应用越来越大，简单的单一的web架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统保障分布式应用有序运行，资源调度。">
+<meta property="og:description" content="hdfs介绍&amp;ensp;&amp;ensp;hdfs是按照Google的论文GFS以Java编程实现的分布式文件系统，此外Hadoop和HBASE也是按照Google的论文写出的程序；&amp;ensp;&amp;ensp;hdfs由DataNode，NameNode，Secondary NameNode和client组成;其中DataNode由block数据块组成， 数据块数据块是HDFS系统中最小的存储单位，一个大文">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-17T12:14:11.000Z">
-<meta property="article:modified_time" content="2021-03-17T13:38:09.477Z">
+<meta property="og:image" content="http://yoursite.com/img/hdfs_stucture.png">
+<meta property="og:image" content="http://yoursite.com/img/yarn_structer.jpg">
+<meta property="og:image" content="http://yoursite.com/img/mapreduce-pattern.png">
+<meta property="og:image" content="http://yoursite.com/img/mapreduce-process-overview.png">
+<meta property="article:published_time" content="2021-03-24T02:03:04.000Z">
+<meta property="article:modified_time" content="2021-03-24T08:39:05.517Z">
 <meta property="article:author" content="雷利锋">
-<meta property="article:tag" content="flink">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="雷利锋">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/img/hdfs_stucture.png">
   
     <link rel="alternative" href="/atom.xml" title="雷利锋个人博客" type="application/atom+xml">
   
@@ -174,29 +178,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-flink实践" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Flink实践
+      大数据
     </h1>
   
 
         
-        <a href="/2021/03/17/flink%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
-  	<time datetime="2021-03-17T12:14:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-17</time>
+        <a href="/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.html" class="archive-article-date">
+  	<time datetime="2021-03-24T02:03:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="flink背景"><a href="#flink背景" class="headerlink" title="flink背景"></a>flink背景</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><!-- ![avatar](/img/dubbo-architecture.jpg) -->
-<p>&ensp;&ensp;随着互联网的发展，网站应用越来越大，简单的单一的web架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统保障分布式应用有序运行，资源调度。</p>
-<a id="more"></a>
+        <h1 id="hdfs介绍"><a href="#hdfs介绍" class="headerlink" title="hdfs介绍"></a>hdfs介绍</h1><p><img src="/img/hdfs_stucture.png" alt="avatar"><br>&ensp;&ensp;hdfs是按照<strong>Google</strong>的论文<strong>GFS</strong>以<strong>Java</strong>编程实现的分布式文件系统，此外<strong>Hadoop</strong>和<strong>HBASE</strong>也是按照Google的论文写出的程序；<br>&ensp;&ensp;<strong>hdfs</strong>由<strong>DataNode</strong>，<strong>NameNode</strong>，<strong>Secondary NameNode</strong>和<strong>client</strong>组成;其中DataNode由block数据块组成，</p>
+<h3 id="数据块"><a href="#数据块" class="headerlink" title="数据块"></a>数据块</h3><p>数据块是HDFS系统中最小的存储单位，一个大文件会被拆成一个个的块进行存储，每一个块会被复制多份存储到多个DataNode节点上；<br>文件采取这样存储的好处:</p>
+<ul>
+<li>减少搜寻时间，磁盘存储读取都是按块存储读取的；</li>
+<li>减少了建立网络的连接成本；</li>
+<li>文件冗余备份；</li>
+</ul>
+<h3 id="NameNode"><a href="#NameNode" class="headerlink" title="NameNode"></a>NameNode</h3><p>&ensp;&ensp;<strong>name节点</strong>存储文件的<strong>metadata</strong>，<strong>运行时加载到内存中</strong>，整个HDFS可存储的<strong>文件数</strong>受限于namenode的大小；一个block对应namenode中一条记录，如果是小文件会消耗大量内存。map task的数量由splits来决定，所以MapReduce处理大量的小文件时，就会产生过多的map task，线程管理开销将会增加作业时间。处理大量小文件的速度远远小于处理同等大小的大文件的速度。处理大量的小文件时极有可能迅速消耗完线程池，因此Hadoop建议存储大文件。数据会定时暂存到本地磁盘，但不会存储block的位置信息，而是有DataNode注册时上报和运行时维护。</p>
+<h3 id="Secondary-namenode"><a href="#Secondary-namenode" class="headerlink" title="Secondary namenode"></a>Secondary namenode</h3><p>&ensp;&ensp;<strong>secondary namenode</strong>需要定时与<strong>namenode</strong>进行同步 ，两者是一种<strong>主从关系</strong>，当namenode失效时，需要<strong>手动设置</strong>它为namenode；</p>
+<h3 id="Datanode"><a href="#Datanode" class="headerlink" title="Datanode"></a>Datanode</h3><p>&ensp;&ensp;<strong>datanode</strong>节点保存具体的block数据，负责数据的读写复制操作，DataNode启动时会向Namenode报告当前的数据块信息，后续也会定时报告修改信息，DataNode之间会进行互相负责保障<strong>冗余</strong>。</p>
+<h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><p>&ensp;&ensp;<strong>client</strong>是HDFS系统对外沟通的桥梁，外界通过client进行访问数据;</p>
+<h1 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h1><p><img src="/img/yarn_structer.jpg" alt="avatar"><br>&ensp;&ensp;<strong>yarn</strong>在2.0版本之后将<strong>jobTracker</strong>的职责进行拆分，将<strong>资源管理</strong>和<strong>任务调度</strong>拆分为独立的进程，一个全局的资源管理<strong>ResourceManager</strong>和<strong>NodeManager</strong>提供计算资源的分配和管理，而<strong>applicationMaster</strong>则监督应用程序的运行，<strong>Container</strong>则是任务运行的单位。</p>
+<h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><p><img src="/img/mapreduce-pattern.png" alt="avatar"><br>&ensp;&ensp;<strong>hadoop</strong>是一种<strong>MapReduce分布式</strong>的计算方式，指定一个<strong>map函数</strong>，用来把一组键值对映射成一组新的键值对，指定并发的<strong>reduce函数</strong>，用来保障所有映射的键值对中的每一个共享相同的键组。map—&gt;reduce</p>
+<h2 id="计算流程"><a href="#计算流程" class="headerlink" title="计算流程"></a>计算流程</h2><p><img src="/img/mapreduce-process-overview.png" alt="avatar"><br>&ensp;&ensp;<strong>MapReduce</strong>主要是先读取文件的数据，对文件内的数据进行map操作，接着对map后的结果进行reduce处理，最后建处理结果写到文件中。</p>
+<ul>
+<li>map：在映射器中用户提供的代码称为<strong>中间对</strong>。对于键值的具体定义决定了数据分类的依据；</li>
+<li>Shuffle and sort：reduce任务以<strong>随机和排序</strong>步骤开始。此步骤写入输出文件并<strong>下载</strong>到本地计算机。这些数据采用键继续排序把同一组的数据合在一起；</li>
+<li>reduce：reduce采用分组数据作为输入。该功能传递键和此键相关的迭代器。可以采用多种方式来汇总、过滤或合并数据。当reduce功能完成，就会发送0个或多个键值对。</li>
+<li>输出格式：<strong>输出格式</strong>会转换最终的键值对并<strong>写入文件</strong>。默认情况下键和值以<strong>tab</strong>分割，各记录以<strong>换行符</strong>分割。最终数据会写入<strong>HDFS</strong>。</li>
+</ul>
+
       
 
       
@@ -235,21 +257,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">flink</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -300,7 +307,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/03/17/flink%E5%AE%9E%E8%B7%B5/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/%E5%A4%A7%E6%95%B0%E6%8D%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -312,16 +319,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2021/03/17/dubbo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Dubbo+springboot</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -372,7 +369,7 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
