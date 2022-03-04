@@ -237,8 +237,8 @@
 <li>检索时，Varchar保留尾部的空格</li>
 </ul>
 </li>
-<li>=与&lt;=&gt;的区别<ul>
-<li>当字段为null时，不能直接用=相等；就可以使用&lt;=&gt;，它是null 安全</li>
+<li>=与\&lt;=>的区别<ul>
+<li>当字段为null时，不能直接用=相等；就可以使用\&lt;=>，它是null 安全</li>
 </ul>
 </li>
 <li>REGEXP可以用正则表达式匹配字段</li>
@@ -246,94 +246,8 @@
 <li>NOT 和！：表示逻辑非</li>
 <li>AND和&amp;&amp;：表示逻辑与</li>
 <li>OR和|：表示逻辑或</li>
-<li>XOR：表示逻辑异或</li>
-</ul>
-</li>
-<li>位运算符<ul>
-<li>&amp;：按位与</li>
-<li>|：按位或</li>
-<li>^：位异或</li>
-<li>~：按位取反</li>
-<li>&gt;&gt;:位右移</li>
-<li>&lt;&lt;:位左移</li>
-</ul>
-</li>
-<li>流程函数<ul>
-<li>IF(逻辑判断,t,f) 如果逻辑判断true返回t;否则返回f</li>
-<li>IFNULL(value1,value2) 如果value1不为空，返回value1，否则value2</li>
-<li>CASE where value then reault ……else default END;如果value1为真，返回result，否则返回default</li>
-<li>CASE expr where value then result1 …..else default end;如果expr等于value1，返回result，否则default</li>
-</ul>
-</li>
-<li>MySQL默认支持多种存储引擎（创建新表时，可以通过 增加engine关键字设置新建表的存储引擎）<ul>
-<li>MyISAM<ul>
-<li>不支持事务，不支持外键。但是访问速度快，对访问速度有要求的可以使用这个引擎</li>
-<li>MyISAM的表支持三种存储格式<ul>
-<li>静态表（默认）<ul>
-<li>字段都是非变长字段，固定长度，长度不足补充空格，返回时去掉，若数据本身尾部有空格，也会被去掉</li>
-<li>优点是存储非常迅速，容易缓存，易恢复</li>
-<li>缺点是空间占用比较大</li>
-</ul>
-</li>
-<li>动态表<ul>
-<li>字段包含变长格式</li>
-<li>优点是空间占用小</li>
-<li>缺点是频繁更新时，会产生空间碎片，出故障难恢复</li>
-</ul>
-</li>
-<li>压缩表<ul>
-<li>由内部工具实现</li>
-<li>优点是空间占用特别少</li>
-<li>缺点是仅支持非常小的访问开支</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>InnoDB（默认存储引擎）<ul>
-<li>具有提交事务、回滚和崩溃恢复的事务安全。</li>
-<li>但与MyISAM相比，写的处理效率差一点，占用更多的空间</li>
-<li>特性：<ul>
-<li>自动增长列：自动增长列必须是索引，如果是组合索引，也必须要是组合索引的第一列</li>
-<li>外键约束：只有InnoDB支持外键，外键创建时，父类必须要有对应的索引，子类也会在创建子类时自动创建索引</li>
-<li>存储方式：<ul>
-<li>使用共享表空间存储</li>
-<li>使用多表空间存储</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>BDB</li>
-<li>MEMORY<ul>
-<li>使用存在于内存中的内容来创建表；</li>
-<li>每个表实际对应一个磁盘文件</li>
-<li>memory的访问速度很快，因为数据存储在内存中并默认使用hash索引,</li>
-<li>memory主要用于不会不频繁的代码表,或作为统计操作的中间结果</li>
-</ul>
-</li>
-<li>MERGE<ul>
-<li>MERGE是一组MyISAM表的组合,这些表结构完全相同,表本身没有数据,对于MERGE表的操作实际上就是对MyISAM表的操作;</li>
-<li>优点:可以突破单个MyISAM表大小的限制，并且通过将不同的表发布在多个磁盘上</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>TEXT和BLOB<ul>
-<li>二者都是存储大文件；</li>
-<li>但TEXT只能存储文本，BLOB可以存储二进制文件，如图片，音频</li>
-<li>在执行了大量的删除操作后，会留下很多的空洞，导致性能问题；需要执行OPTIMIZE TABLE，进行碎片整理</li>
-<li>可以通过合成索引来加快对二者的查询；hash MD5</li>
-</ul>
-</li>
-<li>索引<ul>
-<li>mysql存储引擎默认的索引都是B树索引</li>
-</ul>
-</li>
-</ul>
-
+<li>XOR：表示逻辑异或</li></ul></li></ul>
+        
       
 
       
@@ -346,81 +260,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/03/04/Mysql/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/04/hello-world/" class="archive-article-date">
-  	<time datetime="2022-03-04T02:20:50.512Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/04/hello-world/">展开全文 >></a>
         </p>
       
 
