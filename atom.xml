@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>雷利锋个人博客</title>
+  
+  
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2022-03-04T06:58:38.698Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>雷利锋</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mysql</title>
+    <link href="http://yoursite.com/2022/03/04/Mysql/"/>
+    <id>http://yoursite.com/2022/03/04/Mysql/</id>
+    <published>2022-03-04T06:57:59.000Z</published>
+    <updated>2022-03-04T06:58:38.698Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p><code>MySQL</code> <code>DDL</code> <code>DML</code> <code>DCL</code></p><ul><li>SQL分类<ul><li>DDL：数据定义语言，表，库定义</li><li><span style="background-color: #ffaaaa">DML：数据操作语言，增删改查</span></li><li>DCL：数据控制语言，权限赋予</li></ul></li><li>系统数据库<ul><li>information_schema：主要存储了系统中的数据库对象信息，如用户表信息，列信息，权限信息</li><li>cluster：存储了系统的集群信息</li><li>mysql：用户权限信息</li></ul></li><li>表连接<ul><li>内连接：仅选出表中互相匹配的记录</li><li>外连接：会选出其他不匹配的记录<ul><li>左连接：包含左边表中的全部记录，即使右表中没有与它匹配的记录</li><li>右连接：包含右边表中的全部记录，即使左表中没有与它匹配的记录</li></ul></li></ul></li><li>子查询<ul><li><span style="background-color: #ffaaaa">在进行查询时，需要另一个select语句的结果时，可以使用子查询；子查询的关键字主要有in、not in、=、！=、exists、not exists</span></li><li>select * from emp where deptno in (select deptno  from dept);</li></ul></li><li>记录联合<ul><li>将两个查询合并在一起</li><li>union all，简单地将两个查询结果合并</li><li>union ，在union all的基础上distinct</li></ul></li><li>小数<ul><li>浮点数 </li><li>定点数 在mysql中以字符串的形式存储，比浮点数更加精确，适合表示货币等精度高的数据</li></ul></li><li>日期<ul><li>DATE 年月日</li><li>DATETIME 年月日时分秒</li><li>TIME 时分秒</li><li>TIMESTAMP 时间戳</li><li>YEAR 年</li></ul></li><li>char与VarChar区别<ul><li>检索时，char删除了尾部的空格</li><li>检索时，Varchar保留尾部的空格</li></ul></li><li>=与&lt;=&gt;的区别<ul><li>当字段为null时，不能直接用=相等；就可以使用&lt;=&gt;，它是null 安全</li></ul></li><li>REGEXP可以用正则表达式匹配字段</li><li>逻辑运算符<ul><li>NOT 和！：表示逻辑非</li><li>AND和&amp;&amp;：表示逻辑与</li><li>OR和|：表示逻辑或</li><li>XOR：表示逻辑异或</li></ul></li><li>位运算符<ul><li>&amp;：按位与</li><li>|：按位或</li><li>^：位异或</li><li>~：按位取反</li><li>&gt;&gt;:位右移</li><li>&lt;&lt;:位左移</li></ul></li><li>流程函数<ul><li>IF(逻辑判断,t,f) 如果逻辑判断true返回t;否则返回f</li><li>IFNULL(value1,value2) 如果value1不为空，返回value1，否则value2</li><li>CASE where value then reault ……else default END;如果value1为真，返回result，否则返回default</li><li>CASE expr where value then result1 …..else default end;如果expr等于value1，返回result，否则default</li></ul></li><li>MySQL默认支持多种存储引擎（创建新表时，可以通过 增加engine关键字设置新建表的存储引擎）<ul><li>MyISAM<ul><li>不支持事务，不支持外键。但是访问速度快，对访问速度有要求的可以使用这个引擎</li><li>MyISAM的表支持三种存储格式<ul><li>静态表（默认）<ul><li>字段都是非变长字段，固定长度，长度不足补充空格，返回时去掉，若数据本身尾部有空格，也会被去掉</li><li>优点是存储非常迅速，容易缓存，易恢复</li><li>缺点是空间占用比较大</li></ul></li><li>动态表<ul><li>字段包含变长格式</li><li>优点是空间占用小</li><li>缺点是频繁更新时，会产生空间碎片，出故障难恢复</li></ul></li><li>压缩表<ul><li>由内部工具实现</li><li>优点是空间占用特别少</li><li>缺点是仅支持非常小的访问开支</li></ul></li></ul></li></ul></li><li>InnoDB（默认存储引擎）<ul><li>具有提交事务、回滚和崩溃恢复的事务安全。</li><li>但与MyISAM相比，写的处理效率差一点，占用更多的空间</li><li>特性：<ul><li>自动增长列：自动增长列必须是索引，如果是组合索引，也必须要是组合索引的第一列</li><li>外键约束：只有InnoDB支持外键，外键创建时，父类必须要有对应的索引，子类也会在创建子类时自动创建索引</li><li>存储方式：<ul><li>使用共享表空间存储</li><li>使用多表空间存储</li></ul></li></ul></li></ul></li><li>BDB</li><li>MEMORY<ul><li>使用存在于内存中的内容来创建表；</li><li>每个表实际对应一个磁盘文件</li><li>memory的访问速度很快，因为数据存储在内存中并默认使用hash索引,</li><li>memory主要用于不会不频繁的代码表,或作为统计操作的中间结果</li></ul></li><li>MERGE<ul><li>MERGE是一组MyISAM表的组合,这些表结构完全相同,表本身没有数据,对于MERGE表的操作实际上就是对MyISAM表的操作;</li><li>优点:可以突破单个MyISAM表大小的限制，并且通过将不同的表发布在多个磁盘上</li></ul></li></ul></li><li>TEXT和BLOB<ul><li>二者都是存储大文件；</li><li>但TEXT只能存储文本，BLOB可以存储二进制文件，如图片，音频</li><li>在执行了大量的删除操作后，会留下很多的空洞，导致性能问题；需要执行OPTIMIZE TABLE，进行碎片整理</li><li>可以通过合成索引来加快对二者的查询；hash MD5</li></ul></li><li>索引<ul><li>mysql存储引擎默认的索引都是B树索引</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h1&gt;&lt;p&gt;&lt;code&gt;MySQL&lt;/code&gt; &lt;code&gt;DDL&lt;/code&gt; &lt;code&gt;DML&lt;/code&gt; &lt;code</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2022/03/04/hello-world/"/>
+    <id>http://yoursite.com/2022/03/04/hello-world/</id>
+    <published>2022-03-04T02:20:50.512Z</published>
+    <updated>2022-03-04T02:20:50.512Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux</title>
+    <link href="http://yoursite.com/2020/10/26/linux/"/>
+    <id>http://yoursite.com/2020/10/26/linux/</id>
+    <published>2020-10-26T13:17:21.000Z</published>
+    <updated>2020-10-29T08:00:54.852Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是操作系统？"><a href="#什么是操作系统？" class="headerlink" title="什么是操作系统？"></a>什么是操作系统？</h1><p>&ensp;&ensp;操作系统是在硬件基础上的第一层软件，向上为用户提供接口，向下管理计算机硬件资源。一个操作系统能否在一个机子上运行取决于改操作系统是否支持当前机子的硬件架构.Linux仅提供了一个操作系统中最底层的硬件控制与资源管理架构,该架构是继承了Unix良好的传统而来的.所以仅安装Linux系统仅拥有内核和内核工具,需要与第三方软件结合才能发挥出Linux操作系统的真正力量.</p><h1 id="Linux的应用？"><a href="#Linux的应用？" class="headerlink" title="Linux的应用？"></a>Linux的应用？</h1><p>&ensp;&ensp;当前Linux的应用重要集中在网络服务器，例如网站服务器，邮件服务器，文件服务器等，因为Linux特别稳定与强大；此外Linux还可以应用于关键任务，如金融数据库，大型企业网络环境等；另外Linux还可以应用于学术机构的高性能计算任务，学术机构的研究常常需要自行研发软件，所以需要像Linux这样稳定的开发环境，同时Linux又兼备强大 的运算能力。</p><h1 id="MBR与GPT"><a href="#MBR与GPT" class="headerlink" title="MBR与GPT"></a>MBR与GPT</h1><p>&ensp;&ensp;MBR分区表由一个主引导记录、分区表组成；</p><ul><li>主引导记录：安装启动引导程序，有446字节；</li><li>分区表：记录硬盘分区的状态，有64字节，因为分区表只有64字节，所以磁盘最多分为四个记录区，每一组记录区记录了该区段的起始于结束的柱面号码；</li><li>所谓分区就是对64字节的分区表进行设置；</li><li>硬盘默认的分区表仅能写入四组分区信息；</li><li>这四组划分信息我们称为主要或扩展分区；</li><li>分区的最小划分单位为柱面；</li><li>扩展分区的记录区可以再次用来划分；</li><li>扩展分区最多只能有一个，操作系统的限制；</li><li>逻辑分区是扩展分区持续分出来的分区；</li><li>主要分区与逻辑分区可以进行格式化，扩展分区不能进行格式化；</li><li>逻辑分区的数量依操作系统不同而不同；<br>&ensp;&ensp;MBR的缺点：</li><li>操作系统无法使用2.2TB以上的磁盘容量；</li><li>MBR仅有一个区块，若被破坏后，经常无法或很难恢复；</li><li>MBR引导分区只有446字节，无法存储更多的程序；<br>&ensp;&ensp;GPT分区默认可以提供128组记录，而在Linux本身的内核记录中，针对单一磁盘来说，虽然过去最多只能达到15个分区，不过由于Linux内核通过udev等方式的处理，现在Linux也已经没有这个限制了，GPT没有主，扩展，逻辑分区的概念，每一个分区都可以拿来格式化使用；GPT支持更加大容量的磁盘，而且兼容MBR格式。<blockquote><p>man与info命令：查看命令具体信息</p></blockquote><h1 id="FHS"><a href="#FHS" class="headerlink" title="FHS"></a>FHS</h1>&ensp;&ensp;由于Linux的发行版太多了，如果所有人都按照自己意愿安排目录的话，项目的交接将变得非常复杂；因此FHS的目的就是为了让用户了解到按照软件通常放在哪个目录；由FHS可知目录可以分为以下四种：</li><li>可分享不变目录 /usr /opt</li><li>不可分享不变目录 /etc /boot</li><li>不可分享可变目录 /var/run /var/lock</li><li>可分享可变动目录 /var/mail /var/spool/news<br>实际上，FHS针对目录树架构仅定义出三层目录以及三层目录该放什么数据而已，分别是以下三个目录：</li><li>/ :与启动系统有关</li><li>/usr: 与安装软件/执行有关</li><li>/var：与系统运行过程有关<h3 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h3>&ensp;&ensp;所有的目录不仅是由根目录衍生出来的，而且也与启动、还原、系统修复等操作有关，因此/目录的分区越小越好，越大反而更加容易出错；不要将应用程序安装到根目录；<br>目录内容如下：</li><li>/bin 存放普通用户和管理员都能执行的命令</li><li>/boot 存在内核启动文件，如grub2这个启动引导程序</li><li>/dev 设备与接口设备都以文件的形式存在在这个目录下，如/dev/null、/dev/zero、/dev/tty、/dev/loop<em>、/dev/sd</em>等</li><li>/etc 存放系统的配置文件，只有root能够修改，如/etc/opt存放第三方软件</li><li>/lib 存放启动时会用到的库函数，或者bin、sbin库函数依赖，如/lib/modules存放驱动程序</li><li>/media 存放可删除的设备，如/media/floppy，/media/cdrom</li><li>/mnt 用来挂载暂时的设备</li><li>/opt 存放第三方软件，与/etc/opt链接关系</li><li>/run 存放启动后的运行信息</li><li>/sbin 存放系统命令，包括启动，修复，还原系统所需要的命令</li><li>/srv 网络服务的数据目录，如/srv/www</li><li>/tmp 暂时数据存放目录<h3 id="var目录"><a href="#var目录" class="headerlink" title="var目录"></a>var目录</h3>&ensp;&ensp;var目录与系统运行有关，如缓存，日志文件等；<br>目录内容如下：</li><li>/var/cache 应用程序产生的缓存</li><li>/var/lib 程序执行过程中，所需要使用到的数据文件</li><li>/var/lock 对独占设备上锁操作产生的锁文件</li><li>/var/log 存放日志</li><li>/var/mail 邮件相关</li><li>/var/run 存放系统运行时产生的进程如pid等</li><li>/var/spool 存放一些队列信息，如消息体通信所需要的队列<h3 id="usr目录"><a href="#usr目录" class="headerlink" title="usr目录"></a>usr目录</h3>&ensp;&ensp;usr目录与软件安装有关；<br>目录内容如下：</li><li>/usr/bin 与/bin目录一致，将/bin链接到这里</li><li>/usr/lib 与/lib一致，将/lib链接到这里</li><li>/usr/local 管理员自己下载的软件建议安装目录</li><li>/var/sbin 网络服务器软件的服务命令，与sbin一致，由/sbin链接到这里</li><li>/var/share 存放只读的共享文件</li></ul><h1 id="文件与目录的默认权限与隐藏权限"><a href="#文件与目录的默认权限与隐藏权限" class="headerlink" title="文件与目录的默认权限与隐藏权限"></a>文件与目录的默认权限与隐藏权限</h1><p>&ensp;&ensp;一个文件或目录除了读写执行（rwx）等基本权限和是否为目录（d）与文件（-）或是链接文件（|）等的属性之外，还拥有隐藏权限与属性这部分可以通过chattr来设置，通过lsattr来查看；但隐藏权限与属性只在ext2，ext3，ext4等文件系统下完全支持，而其他文件系统仅支持其部分属性。</p><h2 id="文件默认隐藏权限-umask"><a href="#文件默认隐藏权限-umask" class="headerlink" title="文件默认隐藏权限 umask"></a>文件默认隐藏权限 umask</h2><p>&ensp;&ensp;当一个文件或者目录创建时，文件或目录的权限默认设为什么值由什么决定呢？没错，就是umask；用户可以通过设置umask值来控制新建文件或目录的权限；umask拥有四个值，例如0022，分别用来控制隐藏权限，用户默认权限，用户组默认权限，组外用户默认权限；当一个文件创建时默认权限为666，文件的权限等于原来权限减去umask上对于的值，例如用户的权限=6-0，用户组的权限=4-2，组外用户的权限=4-2；而当一个文件夹创建时，默认权限为777，创建后权限为原来权限减去umask值与文件创建一样，只是文件与目录的创建默认权限不一样。<br><img src="/2020/10/26/linux/img/umask.png" alt="avatar"></p><h2 id="文件隐藏属性"><a href="#文件隐藏属性" class="headerlink" title="文件隐藏属性"></a>文件隐藏属性</h2><p>&ensp;&ensp;隐藏属性仅在ext2，ext3，ext4完整地支持全部属性，例如centos7默认的文件系统xfs仅支持部分属性，具体的权限值有：</p><ul><li>A 通过设置这个权限，当用户存取文件时，将不会更改atime属性，这样可以加快访问速度；</li><li>S 一般文件都是非同步写入磁盘的，当文件在内存中修改时，不会立即写入磁盘；当设置这个权限后，修改文件后立即写入磁盘；</li><li>a 当设置这个权限后，该文件只能增加，不能删除不能修改，该权限只有root才设置；</li><li>c 当设置该权限后，文件将自动压缩，读取时自动解压，存储时压缩再存储；</li><li>d 当dump执行执行时，设置了d的文件不会被备份；</li><li>i 当一个设置i属性后的文件之后，该文件将不能删除，改名，写入和新增数据，当且仅当用户为root时才能设置；</li><li>s 当设置该属性后，该文件一旦删除，将完全从磁盘上完全删除，无法恢复；</li><li>u u与s属性相反，该文件删除后仍然存在磁盘里可以恢复；<blockquote><p>chattr [+-=][权限] 文件与目录<br><img src="/2020/10/26/linux/img/%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7.png" alt="avatar"></p></blockquote><h2 id="文件特殊权限-SUID，SGID，SBIT"><a href="#文件特殊权限-SUID，SGID，SBIT" class="headerlink" title="文件特殊权限 SUID，SGID，SBIT"></a>文件特殊权限 SUID，SGID，SBIT</h2><img src="/2020/10/26/linux/img/SUID.png" alt="avatar"><br>&ensp;&ensp;文件和文件夹除了r，w，x之外还有其他其他权限如t,s;当s设置在拥有者的x权限上，例如-rwsr-xr-x称为Set UID，简称为SUID的特殊权限，当一个文件设置了SUID之后该文件拥有以下功能：</li><li>SUID权限仅对二进制程序有效；</li><li>执行者对于该程序需要具有x的可执行权限；</li><li>该权限仅在执行时有效；</li><li>执行者拥有文件拥有者的权限；<br><img src="/2020/10/26/linux/img/locate.png" alt="avatar"><br>&ensp;&ensp;当s设置在用户组上的x位时，该s称为Set GID（SGID），并拥有以下的功能：</li><li>SGID仅对二进制文件有效；</li><li>程序执行者对于该程序来说，需要具备x的权限；</li><li>执行者在执行的过程中将会获得该程序用户组的支持；<br>&ensp;&ensp;当s设置在others上时，则称为Sticky Bit，这时仅对目录有效，对文件无效，SBIT对于目录的作用是：</li><li>当用户对于此目录拥有w,x的权限，即具有写入的权限；</li><li>当用户在该目录下建立文件或目录时，只有拥有者和root有权力删除；</li><li>在原来的权限修改的三个数基础上加上一个数字来增加权限，4为SUID，2为SGID，1为SBIT；</li><li>当授予的文件或目录s或t权限，但user，group，others没有x权限时，s和t将变成大写；<br><img src="/2020/10/26/linux/img/SUIDST.png" alt="avatar"></li></ul><h2 id="挂载点"><a href="#挂载点" class="headerlink" title="挂载点"></a>挂载点</h2><h2 id="chgrp、chown和chmod"><a href="#chgrp、chown和chmod" class="headerlink" title="chgrp、chown和chmod"></a>chgrp、chown和chmod</h2><ul><li>chgrp [-R] dirname/filename 修改文件或目录的用户组 [-R] 表示递归改变目录下文件和目录的用户组</li><li>chown [-R] 用户/用户:用户组 文件或目录 修改文件或者目录的拥有者 [-R] 表示递归改变目录下文件或者目录的拥有者</li><li>chmod [-R] xyz dirname/filename /chmod u+r,g+w,o-x dirname/filename chmod u=rwx,g=rwx,o=rwx firname/filename 修改文件或目录的权限</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;什么是操作系统？&quot;&gt;&lt;a href=&quot;#什么是操作系统？&quot; class=&quot;headerlink&quot; title=&quot;什么是操作系统？&quot;&gt;&lt;/a&gt;什么是操作系统？&lt;/h1&gt;&lt;p&gt;&amp;ensp;&amp;ensp;操作系统是在硬件基础上的第一层软件，向上为用户提供接口，向下管理计算</summary>
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+    <category term="磁盘" scheme="http://yoursite.com/tags/%E7%A3%81%E7%9B%98/"/>
+    
+    <category term="MBR" scheme="http://yoursite.com/tags/MBR/"/>
+    
+    <category term="GPT" scheme="http://yoursite.com/tags/GPT/"/>
+    
+    <category term="umask" scheme="http://yoursite.com/tags/umask/"/>
+    
+    <category term="SUID" scheme="http://yoursite.com/tags/SUID/"/>
+    
+    <category term="SGID" scheme="http://yoursite.com/tags/SGID/"/>
+    
+    <category term="SBIT" scheme="http://yoursite.com/tags/SBIT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>应用数学</title>
+    <link href="http://yoursite.com/2020/10/26/%E5%BA%94%E7%94%A8%E6%95%B0%E5%AD%A6/"/>
+    <id>http://yoursite.com/2020/10/26/%E5%BA%94%E7%94%A8%E6%95%B0%E5%AD%A6/</id>
+    <published>2020-10-26T13:12:02.000Z</published>
+    <updated>2020-10-26T13:19:03.522Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MapReduce大数据处理平台与算法整理笔记</title>
+    <link href="http://yoursite.com/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/</id>
+    <published>2020-08-30T12:04:02.000Z</published>
+    <updated>2020-09-20T13:16:03.283Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="大数据处理平台"><a href="#大数据处理平台" class="headerlink" title="大数据处理平台"></a>大数据处理平台</h1><h2 id="各类大数据处理平台的优劣"><a href="#各类大数据处理平台的优劣" class="headerlink" title="各类大数据处理平台的优劣"></a>各类大数据处理平台的优劣</h2><table><thead><tr><th>名称</th><th>量级</th><th>计算模型</th><th>支持语言</th><th>用途</th><th>优点</th><th>缺点</th></tr></thead><tbody><tr><td>Hadoop</td><td>重</td><td>MR</td><td>Java</td><td>大数据集上的数据密集型和计算密集型任务</td><td>同时提供数据存储和计算能力，伸缩性好，适合超大数据集的分析处理</td><td>集群可用性差，缺失安全模型，对小文件支持差，需要全局同步，处理小规模数据的速度不一定比串行程序快</td></tr><tr><td>GridGain</td><td>重</td><td>MR</td><td>Java</td><td>基于内存的大数据处理</td><td>对任务无特定要求，适用性好，可以在网络是执行</td><td>不支持任何非Java应用；只提供了分布式计算支持，没有分布式文件系统，reduce阶段前缺少数据预处理</td></tr><tr><td>Mars</td><td>轻</td><td>MR</td><td>C++</td><td>利用GPU进行大数据处理</td><td>支持GPU；允许在单机上利用不同的处理器；在Map和Reduce阶段之前存在两次预处理过程</td><td>GPU线程不支持动态调度；不支持运行时拿出分配空间；预处理操作昂贵</td></tr><tr><td>Phoenix</td><td>轻</td><td>MR</td><td>C/C++</td><td>基于内存的大数据处理</td><td>独立运行，无需提前部署；利用共享内存缓冲区实现通信，避免因数据复制产生开销</td><td>不能自动执行迭代算法；无高效的异常处理机制；预处理操作昂贵</td></tr><tr><td>Twister</td><td>轻</td><td>迭代MR</td><td>Java</td><td>迭代算法，大数据处理</td><td>有效支持迭代算法，提供数据管理工具；在Combine阶段，收集所有Reduce实例输出结果，用户可以通过本地磁盘访问数据</td><td>任务调度机制不如Hadoop有效；需要把大数据文件分为多个小文件</td></tr><tr><td>Disco</td><td>重</td><td>MR</td><td>Erlang,Python</td><td>HTTP协议下的大数据处理</td><td>采用轮询的通信机制，通过HTTP的方式传输数据，适用于web环境</td><td>轮询时间间隔难以确定，降低算法执行性能</td></tr><tr><td>HaLoop</td><td>重</td><td>迭代MR</td><td>Java</td><td>Hadoop的迭代计算优化版本</td><td>更好的支持迭代算法，减少作业开销，增加迭代终止条件的判定</td><td>静态数据和动态数据不能完全分离，导致无效I/O模型较复杂，抽象程度不高</td></tr><tr><td>iMapReduce</td><td>重</td><td>迭代MR</td><td>Java</td><td>Hadoop的迭代计算优化版本</td><td>迭代处理模型优化，避免反复的作业调度开销；优化的动态数据和静态数据管理；避免反复的数据加载和传输开销；支持任务异步执行，避免同步开销</td><td>要求Map实例和Reduce实例数量一样，Map阶段和reduce阶段绑定，调度缺乏灵活性</td></tr><tr><td>iHadoop</td><td>重</td><td>迭代MR</td><td>Java</td><td>Hadoop的迭代计算优化版本</td><td>支持 Map 任务和 Reduce 任务的异步执行，减少同步代价</td><td>缺少静态数据和动态数据的组合管理,无法避免静态数据的传输和处理开销</td></tr><tr><td>PrIter</td><td>重</td><td>迭代MR</td><td>Java</td><td>适用于部分迭代算法的迭代计算</td><td>高效的优先级调度可以加速迭代收敛,通过理论推导保证算法执行的准确性</td><td>部分算法存在优先级, 因此支持算法有限</td></tr><tr><td>Dryad</td><td>轻</td><td>类似MR</td><td>Java</td><td>大数据处理可高度自定义处理算法</td><td>简化大规模分布式编程的难度，提供给用户一个简单通用的分布式运算框架</td><td>由于任务形式自由，因此任务管理并不高效</td></tr><tr><td>Spark</td><td>轻</td><td>类似MR</td><td>Java，Scala，Python，R</td><td>基于内存的大数据处理迭代计算</td><td>可与Hadoop完整结合；保证容错的前提下，内存存储数据，数据访问速度变快</td><td>数据分区能力有限，各台机器计算任务分配不平均，负载不均衡</td></tr><tr><td>Flink</td><td>轻</td><td>类似MR</td><td>Java，Scala，Python</td><td>分布式流处理大数据流计算框架</td><td>暂等调研</td><td>暂等调研</td></tr></tbody></table><a id="more"></a><p>&ensp;&ensp;</p><h3 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a><strong>Hadoop</strong></h3><ul><li><p><strong>支持开发语言</strong>：<strong>Java</strong></p></li><li><p><strong>执行过程：</strong>将作业分解成更小的任务，将数据进行<strong>分区</strong>，每一个<strong>任务实例</strong>处理一个不同的分区，任务实例<strong>并行</strong>执行</p></li><li><p><strong>Hadoop具体执行过程</strong>：</p><ul><li>将<strong>MapReduce</strong>分解为顺序执行的<strong>Map</strong>阶段和<strong>Reduce</strong>阶段，每一个阶段包含一个<strong>Map/Reduce</strong>任务并部署到<strong>Map/Redcue节点</strong>上执行，当所有的<strong>Map/Reduce任务结束</strong>当前<strong>阶段</strong>才结束，执行下一个阶段</li><li>任务执行前，将<strong>任务下载到数据节点上</strong>，而不是迁移数据到执行节点</li></ul></li><li><p><strong>Hadoop处理的是用户自定义的键值对，Map阶段的输出是Reduce阶段的输入</strong></p></li><li><p><strong>MapReduce先将数据分成M份作为M个节点的输入，计算后的结果通过hash函数存储到R个文件里；最终R个Reduce节点接收M*R个文件，每个节点处理M个文件</strong></p></li><li><p><strong>最新的框架还提供ResourceManager和ApplicationManager</strong>；</p><ul><li><strong>ResourceManager</strong>提供<strong>统一的资源调度</strong></li><li><strong>ApplicationManager</strong>跟踪每个节点<strong>状态</strong></li></ul></li></ul><p><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Hadoop.JPG" alt="avatar"><br>&ensp;&ensp;</p><h3 id="GridGain"><a href="#GridGain" class="headerlink" title="GridGain"></a>GridGain</h3><ul><li><strong>支持语言</strong>：<strong>Java</strong></li><li><strong>数据存储提供一种基于内存的、实时和易伸缩的数据网格</strong></li><li><strong>与Hadoop的区别</strong><ul><li>GridGain的作业仅支持<strong>单一的reduce实例</strong>，在reduce阶段<strong>不支持并行功能</strong></li><li>Map任务<strong>返回单一值</strong></li><li>对于map阶段的<strong>中间结果不会进行排序和合并</strong></li><li>用户可以<strong>随意创建和终止Map任务</strong>，较为灵活</li><li><strong>本地性强，强制在本地执行，效率高</strong><br>&ensp;&ensp;</li></ul></li></ul><h3 id="Mars"><a href="#Mars" class="headerlink" title="Mars"></a>Mars</h3><ul><li><strong>支持开发语言</strong>：<strong>C++</strong></li><li><strong>是一种基于GPU的MapReduce框架；在初始阶段在GPU中开启大量线程；并将Map/Reduce任务分发到线程上；并通过无锁的方式控制数据并发</strong></li><li><strong>输入数据为小数量的键值对</strong></li><li><strong>执行过程：Map、Group、Reduce阶段</strong><ul><li>将<strong>硬盘的数据调入内存</strong>，并<strong>转化为键值对格式</strong></li><li>初始化GPU，<strong>定义GPU线程组的数量和每个线程组内线程的数量</strong></li><li><strong>MapSplit将数据调入GPU线程中</strong>；通过<strong>MapCount函数计算输出的中间结果的数量和规模</strong>，并统计出一个局部直方图并<strong>执行前缀和函数</strong>，<strong>获得</strong>每个线程的<strong>输出大小以及写入位置</strong>；由于中间结果的写入位置由前缀和函数得出不会读写冲突</li><li><strong>对中间结果进行排序和hash分组，再组内排序</strong></li><li><strong>ReduceSplit</strong>将<strong>相同key</strong>分到<strong>同一组Reduce线程</strong></li></ul></li><li>Mars可以以<strong>最小的代价快速部署代码</strong>至分布式环境并<strong>整合GPU资源</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Mars.JPG" alt="avatar"></li></ul><p>&ensp;&ensp;</p><h3 id="Phoenix"><a href="#Phoenix" class="headerlink" title="Phoenix"></a>Phoenix</h3><ul><li><strong>支持开发语言</strong>：<strong>C++</strong></li><li>适用于<strong>多核或多处理器</strong>的<strong>共享内存</strong>的分布式计算平台</li><li><strong>执行过程：</strong><ul><li>提前编写<strong>Map/Reduce函数，并指定数据</strong></li><li>启动多个线程，<strong>将数据划分为M块</strong>，在每一个块上<strong>调用Map函数</strong>，并将<strong>中间结果</strong>输出到<strong>内存</strong></li><li>将<strong>相同键对应的所有值传递给Reduce函数</strong>，再通过<strong>逐步合并</strong>为单一的键值对<br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Phoenix.JPG" alt="avatar"></li></ul></li></ul><p>&ensp;&ensp;</p><h3 id="Disco"><a href="#Disco" class="headerlink" title="Disco"></a>Disco</h3><ul><li><strong>支持开发语言</strong>：<strong>Python</strong></li><li><strong>适用于低可靠性的集群系统、多核计算机和云平台之上</strong></li><li><strong>系统采用主从结构；用户提供将编写好的脚步上传到主节点；主节点再为每个从节点分配任务，节点之间通过http协议进行通信</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Disco.JPG" alt="avatar"></li></ul><p>&ensp;&ensp;</p><h3 id="Twister"><a href="#Twister" class="headerlink" title="Twister"></a>Twister</h3><ul><li><strong>支持开发语言</strong>：<strong>Java</strong></li><li><strong>输入数据由静态数据和动态数据组合；静态数据与动态数据完成一轮运算后转化为新的动态数据</strong></li><li><strong>在Hadoop上的改进</strong><ul><li><strong>Hadoop上一个节点只能包含一个Map/Reduce任务，而twister可以包含多个Map/Reduce任务</strong></li><li><strong>Map/Reduce任务静态数据采用内存或本地缓存</strong></li><li><strong>在reduce任务之后添加了combine任务判断迭代是否完成</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Twister.JPG" alt="avatar"></li></ul></li></ul><p>&ensp;&ensp;</p><h3 id="Haloop"><a href="#Haloop" class="headerlink" title="Haloop"></a>Haloop</h3><ul><li><strong>支持开发语言</strong>：<strong>Java</strong></li><li><strong>在Hadoop mapReduce上扩展的迭代计算框架</strong><ul><li>*<em>编程接口更加适用于迭代算法 *</em></li><li><strong>单节点支持多Map/Reduce任务</strong></li><li><strong>实现迭代终止条件的检测</strong></li><li><strong>任务尽量满足本地计算的特性，两次迭代任务尽量使用相同的数据，对没有变化的数据进行本地存储</strong></li><li><strong>增加索引加强数据访问</strong></li></ul></li><li><strong>仍有的缺点：</strong><ul><li><strong>动态和静态数据无法分离</strong></li><li><strong>没有一个客观的停止迭代的标准</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Haloop.jpg" alt="avatar"></li></ul></li></ul><p>&ensp;&ensp;</p><h3 id="iMapReduce"><a href="#iMapReduce" class="headerlink" title="iMapReduce"></a>iMapReduce</h3><ul><li><strong>支持开发语言</strong>：<strong>Java</strong></li><li><strong>基于Hadoop Map/Reduce的批处理迭代计算模型</strong></li><li><strong>在Hadoop上的改进</strong><ul><li><strong>将reduce任务的结果回转给Map任务</strong></li><li><strong>通过维护本地静态数据来避免加载传输静态数据</strong></li><li><strong>允许异步执行map任务来避免反复的任务同步开销</strong></li></ul></li><li><strong>传统的Map/Reduce批处理模型缺点</strong><ul><li><strong>反复的作业调度开销</strong></li><li><strong>反复的数据加载和传输开销</strong></li><li><strong>反复的任务同步开销</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/iMapReduce.jpg" alt="avatar"></li></ul></li></ul><p>&ensp;&ensp;</p><h3 id="iHadoop"><a href="#iHadoop" class="headerlink" title="iHadoop"></a>iHadoop</h3><ul><li><strong>支持开发语言</strong>：<strong>Java</strong></li><li><strong>类似前者IMapReduce的迭代计算框架</strong></li><li><strong>在Hadoop上的改进</strong><ul><li><strong>实现了mapredcue的异步迭代</strong></li><li><strong>没有静态和动态数据的组合管理，更易管理</strong></li></ul></li><li><strong>缺点：无法避免传输处理数据的开销</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/iHadoop.jpg" alt="avatar"></li></ul><p>&ensp;&ensp;</p><h3 id="prIter"><a href="#prIter" class="headerlink" title="prIter"></a>prIter</h3><ul><li><strong>支持开发语言</strong>：<strong>Java</strong></li><li><strong>基于Hadoop的支持优先级迭代计算框架</strong></li><li><strong>prIter认为只有极少数的节点对计算的收敛起决定作用，而其他大多数对收敛贡献有限</strong></li><li><strong>加入了优先级计算执行引擎，支持多个优先级算法，如PageRank、SSSP、WCC、Adsorption</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/PrIter.jpg" alt="avatar"></li></ul><p>&ensp;&ensp;</p><h3 id="Dryad"><a href="#Dryad" class="headerlink" title="Dryad"></a>Dryad</h3><ul><li><strong>支持开发语言</strong>：<strong>Java</strong></li><li><strong>不是基于MapReduce模型，而是提出了一种通用的、粗粒度的、批处理式的计算模型</strong></li><li><strong>组成</strong><ul><li><strong>vertex计算节点：用户通过自定义vertex节点来实现运算逻辑；执行过程中用户的程序是顺序执行的</strong></li><li><strong>channel数据通道：节点之间通过数据通道来进行数据传输</strong></li></ul></li><li><strong>优点</strong><ul><li><strong>更加灵活的编程模型</strong></li><li><strong>完善的任务管理和容错机制</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Dryad.jpg" alt="avatar"></li></ul></li></ul><p>&ensp;&ensp;</p><h3 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h3><ul><li><strong>支持开发语言</strong>：<strong>Scala</strong>、<strong>Java</strong>、<strong>Python</strong>、<strong>R</strong></li><li><strong>基于内存计算的开源集群计算平台</strong></li><li><strong>运行模式</strong><ul><li><strong>单节点本地运行模式</strong></li><li><strong>单节点的伪分布式运行模式</strong></li><li><strong>基于Standalone Deploy的分布式模式</strong></li><li><strong>基于Hadoop yarn或Mesos的分布式模式</strong></li></ul></li><li><strong>数据存储在弹性分布式数据集（RDD）中，支持粗粒度写操作和精确读到每一条记录；每次操作都保存到内存，并从内存中取数据</strong></li><li><strong>算子（操作）</strong><ul><li><strong>Map/Reduce算子：执行Map/Reduce操作</strong></li><li><strong>Transformation算子：执行数据的转换</strong></li><li><strong>Action算子：数据的汇总和保存操作</strong><br><img src="/2020/08/30/MapReduce%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%AE%97%E6%B3%95/img/Spark.jpg" alt="avatar"></li></ul></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;大数据处理平台&quot;&gt;&lt;a href=&quot;#大数据处理平台&quot; class=&quot;headerlink&quot; title=&quot;大数据处理平台&quot;&gt;&lt;/a&gt;大数据处理平台&lt;/h1&gt;&lt;h2 id=&quot;各类大数据处理平台的优劣&quot;&gt;&lt;a href=&quot;#各类大数据处理平台的优劣&quot; class=&quot;headerlink&quot; title=&quot;各类大数据处理平台的优劣&quot;&gt;&lt;/a&gt;各类大数据处理平台的优劣&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;量级&lt;/th&gt;
+&lt;th&gt;计算模型&lt;/th&gt;
+&lt;th&gt;支持语言&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Hadoop&lt;/td&gt;
+&lt;td&gt;重&lt;/td&gt;
+&lt;td&gt;MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;大数据集上的数据密集型和计算密集型任务&lt;/td&gt;
+&lt;td&gt;同时提供数据存储和计算能力，伸缩性好，适合超大数据集的分析处理&lt;/td&gt;
+&lt;td&gt;集群可用性差，缺失安全模型，对小文件支持差，需要全局同步，处理小规模数据的速度不一定比串行程序快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GridGain&lt;/td&gt;
+&lt;td&gt;重&lt;/td&gt;
+&lt;td&gt;MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;基于内存的大数据处理&lt;/td&gt;
+&lt;td&gt;对任务无特定要求，适用性好，可以在网络是执行&lt;/td&gt;
+&lt;td&gt;不支持任何非Java应用；只提供了分布式计算支持，没有分布式文件系统，reduce阶段前缺少数据预处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Mars&lt;/td&gt;
+&lt;td&gt;轻&lt;/td&gt;
+&lt;td&gt;MR&lt;/td&gt;
+&lt;td&gt;C++&lt;/td&gt;
+&lt;td&gt;利用GPU进行大数据处理&lt;/td&gt;
+&lt;td&gt;支持GPU；允许在单机上利用不同的处理器；在Map和Reduce阶段之前存在两次预处理过程&lt;/td&gt;
+&lt;td&gt;GPU线程不支持动态调度；不支持运行时拿出分配空间；预处理操作昂贵&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Phoenix&lt;/td&gt;
+&lt;td&gt;轻&lt;/td&gt;
+&lt;td&gt;MR&lt;/td&gt;
+&lt;td&gt;C/C++&lt;/td&gt;
+&lt;td&gt;基于内存的大数据处理&lt;/td&gt;
+&lt;td&gt;独立运行，无需提前部署；利用共享内存缓冲区实现通信，避免因数据复制产生开销&lt;/td&gt;
+&lt;td&gt;不能自动执行迭代算法；无高效的异常处理机制；预处理操作昂贵&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Twister&lt;/td&gt;
+&lt;td&gt;轻&lt;/td&gt;
+&lt;td&gt;迭代MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;迭代算法，大数据处理&lt;/td&gt;
+&lt;td&gt;有效支持迭代算法，提供数据管理工具；在Combine阶段，收集所有Reduce实例输出结果，用户可以通过本地磁盘访问数据&lt;/td&gt;
+&lt;td&gt;任务调度机制不如Hadoop有效；需要把大数据文件分为多个小文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Disco&lt;/td&gt;
+&lt;td&gt;重&lt;/td&gt;
+&lt;td&gt;MR&lt;/td&gt;
+&lt;td&gt;Erlang,Python&lt;/td&gt;
+&lt;td&gt;HTTP协议下的大数据处理&lt;/td&gt;
+&lt;td&gt;采用轮询的通信机制，通过HTTP的方式传输数据，适用于web环境&lt;/td&gt;
+&lt;td&gt;轮询时间间隔难以确定，降低算法执行性能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HaLoop&lt;/td&gt;
+&lt;td&gt;重&lt;/td&gt;
+&lt;td&gt;迭代MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;Hadoop的迭代计算优化版本&lt;/td&gt;
+&lt;td&gt;更好的支持迭代算法，减少作业开销，增加迭代终止条件的判定&lt;/td&gt;
+&lt;td&gt;静态数据和动态数据不能完全分离，导致无效I/O模型较复杂，抽象程度不高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;iMapReduce&lt;/td&gt;
+&lt;td&gt;重&lt;/td&gt;
+&lt;td&gt;迭代MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;Hadoop的迭代计算优化版本&lt;/td&gt;
+&lt;td&gt;迭代处理模型优化，避免反复的作业调度开销；优化的动态数据和静态数据管理；避免反复的数据加载和传输开销；支持任务异步执行，避免同步开销&lt;/td&gt;
+&lt;td&gt;要求Map实例和Reduce实例数量一样，Map阶段和reduce阶段绑定，调度缺乏灵活性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;iHadoop&lt;/td&gt;
+&lt;td&gt;重&lt;/td&gt;
+&lt;td&gt;迭代MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;Hadoop的迭代计算优化版本&lt;/td&gt;
+&lt;td&gt;支持 Map 任务和 Reduce 任务的异步执行，减少同步代价&lt;/td&gt;
+&lt;td&gt;缺少静态数据和动态数据的组合管理,无法避免静态数据的传输和处理开销&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PrIter&lt;/td&gt;
+&lt;td&gt;重&lt;/td&gt;
+&lt;td&gt;迭代MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;适用于部分迭代算法的迭代计算&lt;/td&gt;
+&lt;td&gt;高效的优先级调度可以加速迭代收敛,通过理论推导保证算法执行的准确性&lt;/td&gt;
+&lt;td&gt;部分算法存在优先级, 因此支持算法有限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dryad&lt;/td&gt;
+&lt;td&gt;轻&lt;/td&gt;
+&lt;td&gt;类似MR&lt;/td&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;大数据处理可高度自定义处理算法&lt;/td&gt;
+&lt;td&gt;简化大规模分布式编程的难度，提供给用户一个简单通用的分布式运算框架&lt;/td&gt;
+&lt;td&gt;由于任务形式自由，因此任务管理并不高效&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spark&lt;/td&gt;
+&lt;td&gt;轻&lt;/td&gt;
+&lt;td&gt;类似MR&lt;/td&gt;
+&lt;td&gt;Java，Scala，Python，R&lt;/td&gt;
+&lt;td&gt;基于内存的大数据处理迭代计算&lt;/td&gt;
+&lt;td&gt;可与Hadoop完整结合；保证容错的前提下，内存存储数据，数据访问速度变快&lt;/td&gt;
+&lt;td&gt;数据分区能力有限，各台机器计算任务分配不平均，负载不均衡&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Flink&lt;/td&gt;
+&lt;td&gt;轻&lt;/td&gt;
+&lt;td&gt;类似MR&lt;/td&gt;
+&lt;td&gt;Java，Scala，Python&lt;/td&gt;
+&lt;td&gt;分布式流处理大数据流计算框架&lt;/td&gt;
+&lt;td&gt;暂等调研&lt;/td&gt;
+&lt;td&gt;暂等调研&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
+    
+    
+    
+    <category term="大数据" scheme="http://yoursite.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+    <category term="mapreduce" scheme="http://yoursite.com/tags/mapreduce/"/>
+    
+    <category term="大数据" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Hadoop" scheme="http://yoursite.com/tags/Hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>知识蒸馏</title>
+    <link href="http://yoursite.com/2020/08/23/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/"/>
+    <id>http://yoursite.com/2020/08/23/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</id>
+    <published>2020-08-23T07:38:30.000Z</published>
+    <updated>2020-08-30T11:56:11.627Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h1><blockquote><p>Hinton G , Vinyals O , Dean J . Distilling the Knowledge in a Neural Network[J]. Computer ence, 2015, 14(7):38-39.</p></blockquote><p>&ensp;&ensp;该论文论述了一种减轻模型的迁移学习方法–知识蒸馏；知识蒸馏的内容是通过由原模型的softmax函数输出的logits组成迁移集提供给新模型训练，从而将原模型的能力转移到新模型上的能力，由于新模型往往更加轻量化，进而实现模型的压缩。<br><br>&ensp;&ensp;作者认为大模型易于从数据中提取特征，但不易于部署；小模型易于部署，却不利于从数据中提取特征。为何不利用大模型从数据中提取特征，但通过小模型部署到工作环境中。</p><h2 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h2><p>&ensp;&ensp;知识蒸馏模型解决了模型在资源紧缺的平台上的部署；传统的训练方式是为将模型尽可能去概括训练集数据，而知识蒸馏则是尽可能去概括大型模型。</p><h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><p>&ensp;&ensp;训练模型的损失函数为$$Loss=w1*CE(y,p)+w2CE(q,p)$$<br>其中w1,w2为两个交叉熵的权值，CE为交叉熵函数，y为label标签，q为原模型的输出，p为训练模型的输出；训练的过程首先通过训练大型模型，大型模型的输出层为softmax函数，输出的结果称为logits；并将logits作为转换集（transfer set）的soft label用于小模型训练；作者认为软标签携带的信息往往比硬标签携带的多，还能反正过拟合的情况发生。<br><br>&ensp;&ensp;训练时的注意点：</p><ul><li>模型的选择不能一味的缩小模型的规模，规模过于小时，模型将无法获取全部的知识；</li><li>模型训练过程中往往忽视明显消极的logits</li></ul><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul><li>原模型softmax函数输出logits作为训练模型的输入</li><li>根据loss函数算出梯度</li><li>调整参数返回步骤1</li></ul><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>&ensp;&ensp;通过在MNIST、语音识别、大规模数据集上的训练压缩结果表明，该模型可以在较少的减少准确率的情况下大大压缩模型。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;知识蒸馏&quot;&gt;&lt;a href=&quot;#知识蒸馏&quot; class=&quot;headerlink&quot; title=&quot;知识蒸馏&quot;&gt;&lt;/a&gt;知识蒸馏&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Hinton G , Vinyals O , Dean J . Distilling the Kn</summary>
+      
+    
+    
+    
+    
+    <category term="知识蒸馏" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/"/>
+    
+    <category term="迁移学习" scheme="http://yoursite.com/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>感知机</title>
+    <link href="http://yoursite.com/2020/08/23/%E6%84%9F%E7%9F%A5%E6%9C%BA/"/>
+    <id>http://yoursite.com/2020/08/23/%E6%84%9F%E7%9F%A5%E6%9C%BA/</id>
+    <published>2020-08-23T03:33:25.000Z</published>
+    <updated>2020-09-20T13:15:27.376Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><p><img src="/2020/08/23/%E6%84%9F%E7%9F%A5%E6%9C%BA/img/%E6%84%9F%E7%9F%A5%E6%9C%BA.png" alt="avatar"></p><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>&ensp;&ensp;<strong>感知机</strong>是一个<strong>二类分类</strong>的<strong>线性分类模型</strong>,即<strong>判别模型</strong>，对应于输入空间中将实例划分为正负两类的<strong>分离超平面</strong>；通过将n维的输入空间（特征空间）通过f(x)=sign(wx+b)输出到y={+1,-1}；wx+b=0（为一平面）不属于正类负类任何一类，在该定义下可以视为一个$$ {w^0}{x^0}+{w^1}{x^1}+…+{w^n}{x^n}+b=0 $$超平面，一个将正负类分离的n维超平面（介于两者之间的分类界限）。</p><blockquote><p>如果一个数据集投射到n维空间上，可以找到一个超平面将它划分两侧则该数据集是线性可分；否则非线性可分</p></blockquote><a id="more"></a><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>&ensp;&ensp;旨在求出将训练数据进行线性划分的<strong>分离超平面</strong>。</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul><li>简单</li><li>易于实现</li></ul><h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>&ensp;&ensp;$$f(x)=sign(w*x+b)$$</p><blockquote><p>sign(x)为<strong>符号函数</strong>。</p></blockquote><h2 id="策略（loss-function）"><a href="#策略（loss-function）" class="headerlink" title="策略（loss function）"></a>策略（loss function）</h2><p>$$L(w,b)=\sum\limits_{i=0}^M {|(w*xi+b)|}$$<br>该损失函数为原为<br>$$\frac{1}{||w||} {yi*{(w*xi+b)}}$$<br>,其中$${||w||} $$为w的L2范数，整体表示为误分类的点到超平面的距离，这个策略相比与其他的策略更加能直观的表述误分类点与损失函数的关系；此外<br>$${-yi*(w*xi+b)&gt;0} $$对于误分类的实例恒成立，此处易得<br>$$\frac{1}{||w||} {yi*{(w*xi+b)}}$$,所以所有的误分类点到超平面的距离和可以表示为<br>$$\frac{1}{||w||}\sum\limits_{i=0}^M {yi*{(w*xi+b)}}$$;在不考虑$${\frac{1}{||w||}}$$的情况下，就得到loss函数$$L(w,b)=\sum\limits_{i=0}^M {|(w*xi+b)|}$$，加入yi的原因我认为是原先L2范数中y的表达过于复杂，尤其在求导之后，通过恒等式的方式加入yi,求导更加简单根据奥卡姆剃刀原则，该方式可能更加好。</p><blockquote><p>L2范数是则坐标平方和的平方根；loss函数必须包含x和y才能求导</p></blockquote><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="原始形式"><a href="#原始形式" class="headerlink" title="原始形式"></a>原始形式</h3><p>&ensp;&ensp;任意选择一个超平面，然后用梯度下降法不断地极小化目标函数。</p><ul><li>1、选取初始值w0,b0</li><li>2、在训练集中选取数据（xi,yi）</li><li>3、如果yi(w*xi+b)&lt;=0;w&lt;-w+ηyixi,b&lt;-b+ηyi</li><li>4、转到2，直到训练集中没有误分类点<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#原始模式 处理数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(T,w,b)</span>:</span></span><br><span class="line">    x ,y= T[:,<span class="number">0</span>:<span class="number">-1</span>],T[:,<span class="number">-1</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> x + y</span><br><span class="line">        <span class="keyword">return</span> sign(reduce(sum, (w * x))+b)</span><br><span class="line">    result=np.array(list(map(f,x)))</span><br><span class="line">    <span class="keyword">return</span> result==y</span><br><span class="line"><span class="comment"># 感知机 原始模式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">perceptron</span><span class="params">(T,rate)</span>:</span></span><br><span class="line">    shape=T.shape</span><br><span class="line">    w0,b0=np.random.random((shape[<span class="number">1</span>]<span class="number">-1</span>,)),np.random.random((<span class="number">1</span>,))</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temporary=process(T,w0,b0)</span><br><span class="line">        <span class="keyword">if</span>  <span class="literal">False</span> <span class="keyword">in</span> temporary:</span><br><span class="line">            <span class="function"><span class="keyword">def</span> <span class="title">findFalse</span><span class="params">(temp)</span>:</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(len(temp)):</span><br><span class="line">                    <span class="keyword">if</span> temp[i]==<span class="literal">False</span>:</span><br><span class="line">                        <span class="keyword">return</span> i</span><br><span class="line">            temporary=T[findFalse(temporary)]</span><br><span class="line">            x,y=temporary[<span class="number">0</span>:<span class="number">-1</span>],temporary[<span class="number">-1</span>]</span><br><span class="line">            w0,b0=w0+rate*y*x,b0+rate*y</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> w0,b0</span><br></pre></td></tr></table></figure><p>该方法还不是最好的办法，但是也可以求得最终结果。</p><h1 id="对偶模式"><a href="#对偶模式" class="headerlink" title="对偶模式"></a>对偶模式</h1><p>与原始模式相同就是在原来的基础上减少了计算，将内积提前存储在矩阵上。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;感知机&quot;&gt;&lt;a href=&quot;#感知机&quot; class=&quot;headerlink&quot; title=&quot;感知机&quot;&gt;&lt;/a&gt;感知机&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2020/08/23/%E6%84%9F%E7%9F%A5%E6%9C%BA/img/%E6%84%9F%E7%9F%A5%E6%9C%BA.png&quot; alt=&quot;avatar&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;&amp;ensp;&amp;ensp;&lt;strong&gt;感知机&lt;/strong&gt;是一个&lt;strong&gt;二类分类&lt;/strong&gt;的&lt;strong&gt;线性分类模型&lt;/strong&gt;,即&lt;strong&gt;判别模型&lt;/strong&gt;，对应于输入空间中将实例划分为正负两类的&lt;strong&gt;分离超平面&lt;/strong&gt;；通过将n维的输入空间（特征空间）通过f(x)=sign(wx+b)输出到y={+1,-1}；wx+b=0（为一平面）不属于正类负类任何一类，在该定义下可以视为一个$$ {w^0}{x^0}+{w^1}{x^1}+…+{w^n}{x^n}+b=0 $$超平面，一个将正负类分离的n维超平面（介于两者之间的分类界限）。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果一个数据集投射到n维空间上，可以找到一个超平面将它划分两侧则该数据集是线性可分；否则非线性可分&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+    <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="感知机" scheme="http://yoursite.com/tags/%E6%84%9F%E7%9F%A5%E6%9C%BA/"/>
+    
+    <category term="二分类模型，判别模型" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%EF%BC%8C%E5%88%A4%E5%88%AB%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习笔记</title>
+    <link href="http://yoursite.com/2020/07/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/07/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-07-17T13:26:15.000Z</published>
+    <updated>2020-07-21T05:52:58.884Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="机器学习基础"><a href="#机器学习基础" class="headerlink" title="机器学习基础"></a>机器学习基础</h1><h3 id="基础术语"><a href="#基础术语" class="headerlink" title="基础术语"></a>基础术语</h3><p>  一般情况下，设D={x1,x2,…,xn} 表示包含n个示例的数据集，其中每个示例xi包含d个属性，则每个示例可以表示为xi={xi1,xi2,…xid}d维样本空间的一个向量；也就是数据集可以视为n个在d维空间的向量集合。</p><p>  <strong>训练样本</strong>：训练过程中使用的数据称为“训练数据”；<br>  <strong>训练样本</strong>：训练数据中样本称为训练样本；</p><a id="more"></a><blockquote><p>“模型”泛指从数据中学得的结果<br>从数据中学得模型的过程称为“学习”或“训练”，这个过程通过执行某个学习算法来完成。</p></blockquote><hr><p>&ensp;从数据中<strong><em>学得模型</em></strong>对应的是数据集中存在的某种潜在规律，也称作“<strong><em>假设</em></strong>”。机器学习就是从数据中寻找正确或者近似正确的“假设”。这种潜在的<strong><em>规律</em></strong>也被称为“<strong><em>真相</em></strong>”或者“<strong><em>真实</em></strong>”。<br>&ensp;在建立分类模型的过程中，我们常常需要在示例中添加<strong><em>标记</em></strong>（label），拥有label的示例也被称为“<strong><em>样例</em></strong>”。每个“样例”可以表示（xi，yi）,其中yi&in; &gamma;是该示例的label，&gamma;则是label定义域，也可称为“<strong><em>标记空间</em></strong>”（label space）或者“<strong><em>输出空间</em></strong>”。</p><h3 id="回归与分类"><a href="#回归与分类" class="headerlink" title="回归与分类"></a>回归与分类</h3><p>&ensp;若我们需要预测的是离散值，则此类学习任务称为分类（classification）；若我们需要预测的是连续值，则此类学习任务称为回归（regression）。而分类又可以根据涉及两个或者更多类别分为“二分类”和“多分类”任务。二分类任务中一个类别称为正类，另一个称为反类。<br><br>一般在一个预测任务中都是希望通过数据集{（x1,y1）,(x2,y2),…(xn,yn)}进行学习建立一个从输入空间X到输出空间 &gamma;的映射f:X &rarr; &gamma;。对于不同学习任务 &gamma;的定义也不一样，二分类任务 &gamma;={-1，+1}或 &gamma;={0,1}；多分类任务 &gamma;=R,R为实数集。</p><h3 id="聚类（clustering）"><a href="#聚类（clustering）" class="headerlink" title="聚类（clustering）"></a>聚类（clustering）</h3><p>&ensp;对训练集的示例进行分组分成若干组，每个组称作一个“簇”（cluster），这些自动生成簇可能通过某种潜在的概念划分的，如“深色瓜”，“浅色瓜”,有利于我们进行分析。在聚类学习中“深色瓜”等概念我们事先是不知道的，而且在聚类学习中使用的数据集是无标记的。</p><h3 id="监督信息（supervised-learning）与无监督学习-unsupervised-learning"><a href="#监督信息（supervised-learning）与无监督学习-unsupervised-learning" class="headerlink" title="监督信息（supervised learning）与无监督学习(unsupervised learning)"></a>监督信息（supervised learning）与无监督学习(unsupervised learning)</h3><p>&ensp;根据训练集中是否拥有标记，学习任务可以分成监督信息（supervised learning）与无监督学习(unsupervised learning)。分类和回归属于前者，聚类则属于后者。</p><h3 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h3><p>&ensp;将学习过程组成看作是一个所有假设组成的空间中进行搜索的过程，搜索的目标是找到与训练集“匹配（fit）”的假设，但是学习过程是基于有限样本训练集进行的，可能存在多个与训练集一致的“假设集合”，称之为“版本空间”。</p><h3 id="归纳偏好"><a href="#归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好</h3><p>&ensp;机器学习算法在学习过程中某种类型假设的偏好，称之为“归纳偏好（inductive bias）”或者称之为“偏好”。实际上，归纳偏好对应了学习算法本身所作出的关于“怎样的模型更好”的假设。在具体的现实问题中，这个假设算法成立，即算法的归纳偏好是否与问题本身匹配，大多数时候直接决定了算法能否取得好的性能。<br><strong><em>奥卡姆剃刀：</em></strong>若有多个假设与观察一致，则选择最简单的那个。<br>&ensp;任意两个假设的总误差都是一样的，与学习算法无关，也就是任意一个假设都有可能存在一个与之对应的情况，所以脱离实际问题谈算法是很荒谬的在实际问题中学习算法自身的归纳偏好与问题是否相配，往往起到决定作用。</p><h3 id="经验误差与过拟合"><a href="#经验误差与过拟合" class="headerlink" title="经验误差与过拟合"></a>经验误差与过拟合</h3><p><strong>误差：</strong>学习器的实际输出与样本的真实输出之间的差异；学习器在训练集上的误差称为“<strong>训练误差</strong>”或者“<strong>经验误差</strong>”，在新样本上的误差称为“<strong>泛化误差</strong>”。<br><strong>过拟合：</strong>学习器在训练集上的训练过度导致把训练集自身的某些规律当做所有潜在样本的规律，导致泛化能力下降；过拟合是无法避免的，只能缓解过拟合。<br><strong>欠拟合：</strong>指在训练集上的规律都没有学会，训练不够;常用的解决办法加大训练，如：在神经网络学习中增加训练轮数。</p><h1 id="模型评估与选择"><a href="#模型评估与选择" class="headerlink" title="模型评估与选择"></a>模型评估与选择</h1><p>why:在现实开发中，我们往往有多种学习算法可供选择，对同一算法进行不同的参数配置，训练出来也会得到不同的训练模型；因此这就需要我们对模型进行评估选择泛化误差最小的那个模型。</p><h3 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h3><p>&ensp;假设我们拥有一个包含m个样例的数据集D={(x1,y1),(x2,y2),…,(xm,ym)},我们需要对数据集进行划分成一个训练集S和测试集T.常用的做法有以下三种：</p><h4 id="留出法"><a href="#留出法" class="headerlink" title="留出法"></a>留出法</h4><p>&ensp;<strong>留出法</strong>是直接将数据集D划分成两个互斥的集合，一个作为训练集S，另一个作为测试集T，即D=S&cup;T,S&cap;T=&emptyset;.除此之外划分样本是需要注意数据分布的一致性，例如在分类任务中，在样本划分时需要保证各个集合中的类别比例相似，如果从采样的角度来看待划分过程，则保留类别比例一致的采样方法称之为“分层采样”。例如在D中的正反比例是7:3那么，在划分的各个集合中正反比例也要近似保持在7:3.<br>&ensp;除此之外,在划分之后不同类别的排布如正例全在前，或者反例全在前训练结束也会产生不同的模型，因此单次使用留出法得到的估计往往是不准确的，需要多次使用留出法划分、重复进行使用评估后取平均值作为<strong>评估结果</strong>。<br>&ensp;留出法常用的训练集和测试集<strong>比例</strong>是2:1或者是4:1.</p><h3 id="交叉验证法"><a href="#交叉验证法" class="headerlink" title="交叉验证法"></a>交叉验证法</h3><p>&ensp;<strong>交叉验证法</strong>先将数据集D划分成k个大小相似的互斥子集，即D1,D2,D3,…,Dk,每一个集合尽可能保障数据分布的一致性，然后每次训练取其中一个子集作为测试集，其他作为训练集，这样可以获得k个训练结果取平均值，这种验证方法也可以被称为“k折交叉验证”，k通常取5，10，20。同时与留出法一样为了减少因为数据不同划分造成的误差也需要随机划分P次，重复训练p次，最终的评估结果是这p次k折交叉验证结果的均值。<br>&ensp;留一法（特殊的交叉验证法）：若数据集D包含m个样本，则令k=m，因为与初始数据集D只相差一个示例评估的结果往往被认为是比较准确的；<strong><em>缺点</em></strong>就是在数据集比较大的情况下，计算开销会比较大。</p><h3 id="自助法（适用于数据集比较小的情况）"><a href="#自助法（适用于数据集比较小的情况）" class="headerlink" title="自助法（适用于数据集比较小的情况）"></a>自助法（适用于数据集比较小的情况）</h3><p>&ensp;在上述的两种方法中虽然尽可能的保持的数据分布的一致性，但却导致了样本规模不同的估计偏差；留一法虽然样本规模相似，但应对大型数据集时计算开销往往比较大，有没有那种可以尽量避免样本规模不同导致的估计偏差，计算开销又在可以接受的范围内？<br>&ensp;<strong>自助法</strong>：在一个包含m个样本示例的数据集D中，我们每次随机从数据集D取一个示例加入D&prime;,然后把原来的示例放回D中重复这个过程m次，我们就得到了一个包含m个示例的数据集D&prime;；这其中必然一部分示例不会出现在D&prime;中；于是我们可以将D&prime;作为训练集，D\D&prime;作为测试集。<br>&ensp;样本在m次还没有被取到的概率是(1-1/m)^m，在m趋向于无穷大情况下概率约等于0.368。<br><br>&ensp;<strong>自助法优点</strong>：1、在数据集小并且难以有效划分训练集/测试集时很有用；<br><br>2、自助法能产生多个不同的训练集，这对集成学习很有好处。<br><br>&ensp;<strong>自助法缺点</strong>：自助法产生的数据集改变数据分布，引入了估计偏差，在数据集足量情况下留出法和交叉验证法更加常用。</p><blockquote><p>\为集合减法</p></blockquote><h3 id="调参与最终模型"><a href="#调参与最终模型" class="headerlink" title="调参与最终模型"></a>调参与最终模型</h3><p>&ensp;在模型评估与选择时，除了要对适用学习算法进行选择，还需对算法参数进行设定，这就是“<strong>调参</strong>”或者“<strong>参数调节</strong>”（parameter tuning）；调参过程中往往是规定取值范围和每一次步长。<br>假设我们学习算法和参数配置以及选定，此时应该用数据集重新训练该模型，这次使用所有m个示例，训练出来的结果就是我们要给用户的模型。<br>另外学得模型在实际应用中遇到的数据我们称之为“<strong>测试数据</strong>”，模型评估与选择用来测试数据集叫“<strong>验证集</strong>”。</p><h1 id="性能度量（对于模型泛化的评价标准）"><a href="#性能度量（对于模型泛化的评价标准）" class="headerlink" title="性能度量（对于模型泛化的评价标准）"></a>性能度量（对于模型泛化的评价标准）</h1><blockquote><p>在对比不同模型的能力时，使用不同的性能度量往往会导致不同的判定结果；这意味着模型的“好坏”是相对的，什么样的模型是好的，不仅取决于算法和数据，还取决于任务需求。例如<strong><em>回归任务</em></strong>最常用的性能度量是“<strong>均方误差</strong>”<br>$$E(f;D)=\frac{1}{m}\sum\limits_{i=1}^m(f(xi)-yi){^2}$$    </p></blockquote><h3 id="精确度与准确度（适用于分类任务）"><a href="#精确度与准确度（适用于分类任务）" class="headerlink" title="精确度与准确度（适用于分类任务）"></a>精确度与准确度（适用于分类任务）</h3><p><strong>错误率</strong>：分类错误的样本数占样本总数的比例。<br><strong>精度</strong>：分类正确的样本数占样本总数的比例。<br>对于样例集D,分类错误率定义为：$$E(f;D)=\frac{1}{m}\sum\limits_{i=1}^m\prod(f(xi)\not=yi)$$</p><blockquote><p>&prod;是当后面判断为true时，返回1；为false时，返回0;</p></blockquote><h3 id="查准率、查全率与F1"><a href="#查准率、查全率与F1" class="headerlink" title="查准率、查全率与F1"></a>查准率、查全率与F1</h3><p>在一个信息检索、web搜索等应用中，查准率和查全率可以定义如下：<br><strong>查准率</strong>：检索出的消息中有多少比例是用户感兴趣的<br><strong>查全率</strong>：用户感兴趣的信息中有多少被检索出来<br>具体内容可以参考p31也</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;机器学习基础&quot;&gt;&lt;a href=&quot;#机器学习基础&quot; class=&quot;headerlink&quot; title=&quot;机器学习基础&quot;&gt;&lt;/a&gt;机器学习基础&lt;/h1&gt;&lt;h3 id=&quot;基础术语&quot;&gt;&lt;a href=&quot;#基础术语&quot; class=&quot;headerlink&quot; title=&quot;基础术语&quot;&gt;&lt;/a&gt;基础术语&lt;/h3&gt;&lt;p&gt;  一般情况下，设D={x1,x2,…,xn} 表示包含n个示例的数据集，其中每个示例xi包含d个属性，则每个示例可以表示为xi={xi1,xi2,…xid}d维样本空间的一个向量；也就是数据集可以视为n个在d维空间的向量集合。&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;训练样本&lt;/strong&gt;：训练过程中使用的数据称为“训练数据”；&lt;br&gt;  &lt;strong&gt;训练样本&lt;/strong&gt;：训练数据中样本称为训练样本；&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+</feed>
